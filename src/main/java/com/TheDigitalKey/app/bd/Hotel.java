@@ -1,4 +1,4 @@
-package com.TheDigitalKey.bd;
+package com.TheDigitalKey.app.bd;
 
 import jakarta.persistence.*;
 
