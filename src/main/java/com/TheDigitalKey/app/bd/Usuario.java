@@ -1,6 +1,7 @@
 package com.TheDigitalKey.app.bd;
 
 import java.util.List;
+import com.TheDigitalKey.app.bd.Roles;
 
 import jakarta.persistence.*;
 
@@ -37,13 +38,13 @@ public class Usuario {
      @Column(name = "Telefono")
 	 private String telefono; 
      
+     @ManyToOne
+     @JoinColumn(name = "rol_id", referencedColumnName = "id_rol")
+     private Roles rol;
     
-
-     // Relación OneToMany con la clase Hotel
      @OneToMany(mappedBy = "usuario")
      private List<Reserva> reservas;
 
-     // Constructor vacío (necesario para JPA)
      public Usuario() {
      }
 
