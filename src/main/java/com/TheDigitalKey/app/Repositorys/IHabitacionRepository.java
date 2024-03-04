@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.TheDigitalKey.app.bd.Habitacion;
 
 @Repository
-public interface IHabitacion extends JpaRepository<Habitacion, Long> {
+public interface IHabitacionRepository extends JpaRepository<Habitacion, Long> {
 
 }

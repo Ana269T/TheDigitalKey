@@ -14,28 +14,22 @@ public class Usuario {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
 	 
-	 @Column(name = "Primer_nombre")
-	 private String primer_nombre;
+	 @Column(name = "nombres")
+	 private String nombres;
 
-	 @Column(name = "Segundo_nombre")
-	 private String segundo_nombre;
-	 
-	 @Column(name = "Primer_apellido")
-	 private String primer_apellido;
-
-     @Column(name = "Segundo_apellido")
-	 private int segunso_apellido;
+	 @Column(name = "apellidos")
+	 private String apellidos;
      
-     @Column(name = "Cedula")
+     @Column(name = "cedula")
 	 private String cedula;
 
-	 @Column(name = "Correo")
+	 @Column(name = "correo")
 	 private String correo;
 	 
-	 @Column(name = "Contraseña")
+	 @Column(name = "contraseña")
 	 private int contrasena;
      
-     @Column(name = "Telefono")
+     @Column(name = "telefono")
 	 private String telefono; 
      
      @ManyToOne
@@ -47,103 +41,153 @@ public class Usuario {
 
      public Usuario() {
      }
+     
+     
 
-	public Usuario(Long id, String primer_nombre, String segundo_nombre, String primer_apellido, int segunso_apellido,
-			String cedula, String correo, int contrasena, String telefono, List<Reserva> reservas) {
+
+	public Usuario(Long id, String nombres, String apellidos, String cedula, String correo, int contrasena,
+			String telefono, Roles rol, List<Reserva> reservas) {
 		super();
 		this.id = id;
-		this.primer_nombre = primer_nombre;
-		this.segundo_nombre = segundo_nombre;
-		this.primer_apellido = primer_apellido;
-		this.segunso_apellido = segunso_apellido;
+		this.nombres = nombres;
+		this.apellidos = apellidos;
 		this.cedula = cedula;
 		this.correo = correo;
 		this.contrasena = contrasena;
 		this.telefono = telefono;
+		this.rol = rol;
 		this.reservas = reservas;
 	}
+
+
+
 
 	public Long getId() {
 		return id;
 	}
 
+
+
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getPrimer_nombre() {
-		return primer_nombre;
+
+
+
+	public String getNombres() {
+		return nombres;
 	}
 
-	public void setPrimer_nombre(String primer_nombre) {
-		this.primer_nombre = primer_nombre;
+
+
+
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
 	}
 
-	public String getSegundo_nombre() {
-		return segundo_nombre;
+
+
+
+	public String getApellidos() {
+		return apellidos;
 	}
 
-	public void setSegundo_nombre(String segundo_nombre) {
-		this.segundo_nombre = segundo_nombre;
+
+
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 
-	public String getPrimer_apellido() {
-		return primer_apellido;
-	}
 
-	public void setPrimer_apellido(String primer_apellido) {
-		this.primer_apellido = primer_apellido;
-	}
 
-	public int getSegunso_apellido() {
-		return segunso_apellido;
-	}
-
-	public void setSegunso_apellido(int segunso_apellido) {
-		this.segunso_apellido = segunso_apellido;
-	}
 
 	public String getCedula() {
 		return cedula;
 	}
 
+
+
+
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
+
+
+
 
 	public String getCorreo() {
 		return correo;
 	}
 
+
+
+
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
+
+
+
 
 	public int getContrasena() {
 		return contrasena;
 	}
 
+
+
+
 	public void setContrasena(int contrasena) {
 		this.contrasena = contrasena;
 	}
+
+
+
 
 	public String getTelefono() {
 		return telefono;
 	}
 
+
+
+
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
+
+
+
+	public Roles getRol() {
+		return rol;
+	}
+
+
+
+
+	public void setRol(Roles rol) {
+		this.rol = rol;
+	}
+
+
+
 
 	public List<Reserva> getReservas() {
 		return reservas;
 	}
 
+
+
+
 	public void setReservas(List<Reserva> reservas) {
 		this.reservas = reservas;
 	}
+	
+	
 
-     
+
  
 
 }
