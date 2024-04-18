@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Reserva")
 
-public class Reserva { 
+public class booking { 
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
@@ -33,7 +33,7 @@ public class Reserva {
 	 // Definición de la relación ManyToOne con la entidad Usuario
 	    @ManyToOne
 	    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-	    private Usuario usuario;
+	    private User usuario;
 	    
 	    // Definición de la relación ManyToOne con la entidad Departamento
 	    @ManyToOne
@@ -42,12 +42,12 @@ public class Reserva {
 
 	    
 	    // Constructor vacío (necesario para JPA)
-	    public Reserva() {
+	    public booking() {
 	    }
 	   // Constructor 
 
-		public Reserva(Long id, String fecha_entrada, String fecha_salida, String estado_reserva, int precio_total,
-				String forma_pago, String politica_cancelacion, Usuario usuario) {
+		public booking(Long id, String fecha_entrada, String fecha_salida, String estado_reserva, int precio_total,
+				String forma_pago, String politica_cancelacion, User usuario) {
 			super();
 			this.id = id;
 			this.fecha_entrada = fecha_entrada;
@@ -116,11 +116,11 @@ public class Reserva {
 			this.politica_cancelacion = politica_cancelacion;
 		}
 
-		public Usuario getUsuario() {
+		public User getUsuario() {
 			return usuario;
 		}
 
-		public void setUsuario(Usuario usuario) {
+		public void setUsuario(User usuario) {
 			this.usuario = usuario;
 		}
 

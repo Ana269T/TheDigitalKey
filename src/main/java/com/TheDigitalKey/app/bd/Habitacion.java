@@ -31,14 +31,14 @@ public class Habitacion {
 
      // Relación OneToMany con la clase Hotel
      @OneToMany(mappedBy = "habitacion")
-     private List<Reserva> reservas;
+     private List<booking> reservas;
 
      // Constructor vacío (necesario para JPA)
      public Habitacion() {
      }
 
 	public Habitacion(Long id, String numero_habitacion, String tipo_habitacion, String precio_noche,
-			int disponibilidad, String detalles, List<Reserva> reservas) {
+			int disponibilidad, String detalles, List<booking> reservas) {
 		super();
 		this.id = id;
 		this.numero_habitacion = numero_habitacion;
@@ -97,11 +97,11 @@ public class Habitacion {
 		this.detalles = detalles;
 	}
 
-	public List<Reserva> getReservas() {
+	public List<booking> getReservas() {
 		return reservas;
 	}
 
-	public void setReservas(List<Reserva> reservas) {
+	public void setReservas(List<booking> reservas) {
 		this.reservas = reservas;
 	}
      

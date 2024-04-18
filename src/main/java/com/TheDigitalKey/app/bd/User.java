@@ -1,193 +1,131 @@
 package com.TheDigitalKey.app.bd;
 
 import java.util.List;
-import com.TheDigitalKey.app.bd.Roles;
 
 import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "Usuario")
+@Table(name = "User")
 
-public class Usuario { 
+public class User { 
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
 	 
-	 @Column(name = "nombres")
-	 private String nombres;
+	 @Column(name = "names")
+	 private String names;
 
-	 @Column(name = "apellidos")
-	 private String apellidos;
+	 @Column(name = "last names")
+	 private String last_Names;
      
-     @Column(name = "cedula")
-	 private String cedula;
+     // card es cedula
+	 @Column(name = "ID")
+	 private String card;
 
-	 @Column(name = "correo")
-	 private String correo;
+	 @Column(name = "user name" , unique = true )
+	 private String username;
 	 
-	 @Column(name = "contraseña")
-	 private int contrasena;
+	 @Column(name = "password")
+	 private String password;
      
-     @Column(name = "telefono")
-	 private String telefono; 
+     @Column(name = "phone")
+	 private String phone; 
      
-     @ManyToOne
-     @JoinColumn(name = "rol_id", referencedColumnName = "id_rol")
-     private Roles rol;
+     private String role;
     
-     @OneToMany(mappedBy = "usuario")
-     private List<Reserva> reservas;
+     @OneToMany(mappedBy = "user")
+     private List<booking> booking;
 
-     public Usuario() {
-     }
-     
-     
-
-
-	public Usuario(Long id, String nombres, String apellidos, String cedula, String correo, int contrasena,
-			String telefono, Roles rol, List<Reserva> reservas) {
+	public User() {
 		super();
-		this.id = id;
-		this.nombres = nombres;
-		this.apellidos = apellidos;
-		this.cedula = cedula;
-		this.correo = correo;
-		this.contrasena = contrasena;
-		this.telefono = telefono;
-		this.rol = rol;
-		this.reservas = reservas;
 	}
 
-
-
+	public User(Long id, String names, String last_Names, String card, String username, String password, String phone,
+			String role, List<com.TheDigitalKey.app.bd.booking> booking) {
+		super();
+		this.id = id;
+		this.names = names;
+		this.last_Names = last_Names;
+		this.card = card;
+		this.username = username;
+		this.password = password;
+		this.phone = phone;
+		this.role = role;
+		this.booking = booking;
+	}
 
 	public Long getId() {
 		return id;
 	}
 
-
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-
-
-	public String getNombres() {
-		return nombres;
+	public String getNames() {
+		return names;
 	}
 
-
-
-
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
+	public void setNames(String names) {
+		this.names = names;
 	}
 
-
-
-
-	public String getApellidos() {
-		return apellidos;
+	public String getLast_Names() {
+		return last_Names;
 	}
 
-
-
-
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+	public void setLast_Names(String last_Names) {
+		this.last_Names = last_Names;
 	}
 
-
-
-
-	public String getCedula() {
-		return cedula;
+	public String getCard() {
+		return card;
 	}
 
-
-
-
-	public void setCedula(String cedula) {
-		this.cedula = cedula;
+	public void setCard(String card) {
+		this.card = card;
 	}
 
-
-
-
-	public String getCorreo() {
-		return correo;
+	public String getUsername() {
+		return username;
 	}
 
-
-
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-
-
-
-	public int getContrasena() {
-		return contrasena;
+	public String getPassword() {
+		return password;
 	}
 
-
-
-
-	public void setContrasena(int contrasena) {
-		this.contrasena = contrasena;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-
-
-
-	public String getTelefono() {
-		return telefono;
+	public String getPhone() {
+		return phone;
 	}
 
-
-
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-
-
-
-	public Roles getRol() {
-		return rol;
+	public String getRole() {
+		return role;
 	}
 
-
-
-
-	public void setRol(Roles rol) {
-		this.rol = rol;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
-
-
-
-	public List<Reserva> getReservas() {
-		return reservas;
+	public List<booking> getBooking() {
+		return booking;
 	}
 
-
-
-
-	public void setReservas(List<Reserva> reservas) {
-		this.reservas = reservas;
+	public void setBooking(List<booking> booking) {
+		this.booking = booking;
 	}
-	
-	
-
-
  
 
 }
