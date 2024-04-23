@@ -4,29 +4,30 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Departamento")
-public class Departamento {
+@Table(name = "Department")
+public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre")
-    private String nombre;
+    @Column(name = "name")
+    private String name;
 
     // Relación OneToMany con la clase Hotel
-    @OneToMany(mappedBy = "departamento")
+    @OneToMany(mappedBy = "department")
     private List<Hotel> hoteles;
 
-    // Constructor vacío (necesario para JPA)
-    public Departamento() {
-    }
+	public Department() {
+		super();
+	}
 
-    // Constructor con parámetros
-    public Departamento(String nombre) {
-        this.nombre = nombre;
-    }
-    // gets and sets
+	public Department(Long id, String name, List<Hotel> hoteles) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.hoteles = hoteles;
+	}
 
 	public Long getId() {
 		return id;
@@ -36,12 +37,12 @@ public class Departamento {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public List<Hotel> getHoteles() {
@@ -51,7 +52,8 @@ public class Departamento {
 	public void setHoteles(List<Hotel> hoteles) {
 		this.hoteles = hoteles;
 	}
-    
+
+   
     
     
     

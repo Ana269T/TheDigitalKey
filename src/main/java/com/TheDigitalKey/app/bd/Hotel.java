@@ -11,26 +11,26 @@ public class Hotel {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
 	 
-	 @Column(name = "Nombre")
-	 private String nombre;
+	 @Column(name = "name")
+	 private String Name;
 
-	 @Column(name = "Direccion")
-	 private String direccion;
+	 @Column(name = "Address")
+	 private String address;
 	 
-	 @Column(name = "Departamento")
-	 private String departam;
+	 @Column(name = "Department")
+	 private String department;
 
-     @Column(name = "Telefono")
-	 private int telefono;
+     @Column(name = "Phone")
+	 private int phone;
      
-     @Column(name = "Clasificacion")
-	 private String Clasificacion;
+     @Column(name = "Classification")
+	 private String classification;
 
-	 @Column(name = "Estado")
-	 private String estado;
+	 @Column(name = "State")
+	 private String state;
 	 
-	 @Column(name = "Piscina")
-	 private int piscina;
+	 @Column(name = "Swimming_pool")
+	 private int swimming_pool;
      
      @Column(name = "wifi")
 	 private String wifi;
@@ -38,25 +38,25 @@ public class Hotel {
      // Definición de la relación ManyToOne con la entidad Departamento
      @ManyToOne
      @JoinColumn(name = "departamento_id", referencedColumnName = "id")
-     private Departamento departamento;
+     private Department department_;
 
-     // Constructor vacío (necesario para JPA)
-     public Hotel() {
-     }
+	public Hotel() {
+		super();
+	}
 
-	public Hotel(Long id, String nombre, String direccion, String departam, int telefono, String clasificacion,
-			String estado, int piscina, String wifi, Departamento departamento) {
+	public Hotel(Long id, String name, String address, String department, int phone, String classification,
+			String state, int swimming_pool, String wifi, Department department_) {
 		super();
 		this.id = id;
-		this.nombre = nombre;
-		this.direccion = direccion;
-		this.departam = departam;
-		this.telefono = telefono;
-		Clasificacion = clasificacion;
-		this.estado = estado;
-		this.piscina = piscina;
+		Name = name;
+		this.address = address;
+		this.department = department;
+		this.phone = phone;
+		this.classification = classification;
+		this.state = state;
+		this.swimming_pool = swimming_pool;
 		this.wifi = wifi;
-		this.departamento = departamento;
+		this.department_ = department_;
 	}
 
 	public Long getId() {
@@ -67,60 +67,60 @@ public class Hotel {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return Name;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setName(String name) {
+		Name = name;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String getDepartam() {
-		return departam;
+	public String getDepartment() {
+		return department;
 	}
 
-	public void setDepartam(String departam) {
-		this.departam = departam;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
-	public int getTelefono() {
-		return telefono;
+	public int getPhone() {
+		return phone;
 	}
 
-	public void setTelefono(int telefono) {
-		this.telefono = telefono;
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
 
-	public String getClasificacion() {
-		return Clasificacion;
+	public String getClassification() {
+		return classification;
 	}
 
-	public void setClasificacion(String clasificacion) {
-		Clasificacion = clasificacion;
+	public void setClassification(String classification) {
+		this.classification = classification;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getState() {
+		return state;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setState(String state) {
+		this.state = state;
 	}
 
-	public int getPiscina() {
-		return piscina;
+	public int getSwimming_pool() {
+		return swimming_pool;
 	}
 
-	public void setPiscina(int piscina) {
-		this.piscina = piscina;
+	public void setSwimming_pool(int swimming_pool) {
+		this.swimming_pool = swimming_pool;
 	}
 
 	public String getWifi() {
@@ -131,13 +131,14 @@ public class Hotel {
 		this.wifi = wifi;
 	}
 
-	public Departamento getDepartamento() {
-		return departamento;
+	public Department getDepartment_() {
+		return department_;
 	}
 
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
+	public void setDepartment_(Department department_) {
+		this.department_ = department_;
 	}
+
 
     
 	  

@@ -5,60 +5,58 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "Reserva")
+@Table(name = "Booking")
 
 public class booking { 
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
 	 
-	 @Column(name = "fecha_entrada")
-	 private String fecha_entrada;
+	 @Column(name = "Date_entry")
+	 private String date_entry;
 
-	 @Column(name = "fecha_salida")
-	 private String fecha_salida;
+	 @Column(name = "Date_departure")
+	 private String date_departure;
 	 
-	 @Column(name = "estado_reserva")
-	 private String estado_reserva;
+	 @Column(name = "Reservation_status")
+	 private String reservation_status;
 
-     @Column(name = "precio_total")
-	 private int precio_total;
+     @Column(name = "Total_price")
+	 private int total_price;
      
-     @Column(name = "forma_pago")
-	 private String forma_pago;
+     @Column(name = "Payment_form")
+	 private String payment_form;
 
-	 @Column(name = "politica_cancelacion")
-	 private String politica_cancelacion;
+	 @Column(name = "Cancellation_policy")
+	 private String cancellation_policy;
 	 
 	 // Definición de la relación ManyToOne con la entidad Usuario
 	    @ManyToOne
-	    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-	    private User usuario;
+	    @JoinColumn(name = "user_id", referencedColumnName = "id")
+	    private User user;
 	    
 	    // Definición de la relación ManyToOne con la entidad Departamento
 	    @ManyToOne
-	    @JoinColumn(name = "habitacion_id", referencedColumnName = "id")
-	    private Habitacion habitacion;
+	    @JoinColumn(name = "room_id", referencedColumnName = "id")
+	    private Room room;
 
-	    
-	    // Constructor vacío (necesario para JPA)
-	    public booking() {
-	    }
-	   // Constructor 
+		public booking() {
+			super();
+		}
 
-		public booking(Long id, String fecha_entrada, String fecha_salida, String estado_reserva, int precio_total,
-				String forma_pago, String politica_cancelacion, User usuario) {
+		public booking(Long id, String date_entry, String date_departure, String reservation_status, int total_price,
+				String payment_form, String cancellation_policy, User user, Room room) {
 			super();
 			this.id = id;
-			this.fecha_entrada = fecha_entrada;
-			this.fecha_salida = fecha_salida;
-			this.estado_reserva = estado_reserva;
-			this.precio_total = precio_total;
-			this.forma_pago = forma_pago;
-			this.politica_cancelacion = politica_cancelacion;
-			this.usuario = usuario;
+			this.date_entry = date_entry;
+			this.date_departure = date_departure;
+			this.reservation_status = reservation_status;
+			this.total_price = total_price;
+			this.payment_form = payment_form;
+			this.cancellation_policy = cancellation_policy;
+			this.user = user;
+			this.room = room;
 		}
-		// Getters y setters 
 
 		public Long getId() {
 			return id;
@@ -68,62 +66,72 @@ public class booking {
 			this.id = id;
 		}
 
-		public String getFecha_entrada() {
-			return fecha_entrada;
+		public String getDate_entry() {
+			return date_entry;
 		}
 
-		public void setFecha_entrada(String fecha_entrada) {
-			this.fecha_entrada = fecha_entrada;
+		public void setDate_entry(String date_entry) {
+			this.date_entry = date_entry;
 		}
 
-		public String getFecha_salida() {
-			return fecha_salida;
+		public String getDate_departure() {
+			return date_departure;
 		}
 
-		public void setFecha_salida(String fecha_salida) {
-			this.fecha_salida = fecha_salida;
+		public void setDate_departure(String date_departure) {
+			this.date_departure = date_departure;
 		}
 
-		public String getEstado_reserva() {
-			return estado_reserva;
+		public String getReservation_status() {
+			return reservation_status;
 		}
 
-		public void setEstado_reserva(String estado_reserva) {
-			this.estado_reserva = estado_reserva;
+		public void setReservation_status(String reservation_status) {
+			this.reservation_status = reservation_status;
 		}
 
-		public int getPrecio_total() {
-			return precio_total;
+		public int getTotal_price() {
+			return total_price;
 		}
 
-		public void setPrecio_total(int precio_total) {
-			this.precio_total = precio_total;
+		public void setTotal_price(int total_price) {
+			this.total_price = total_price;
 		}
 
-		public String getForma_pago() {
-			return forma_pago;
+		public String getPayment_form() {
+			return payment_form;
 		}
 
-		public void setForma_pago(String forma_pago) {
-			this.forma_pago = forma_pago;
+		public void setPayment_form(String payment_form) {
+			this.payment_form = payment_form;
 		}
 
-		public String getPolitica_cancelacion() {
-			return politica_cancelacion;
+		public String getCancellation_policy() {
+			return cancellation_policy;
 		}
 
-		public void setPolitica_cancelacion(String politica_cancelacion) {
-			this.politica_cancelacion = politica_cancelacion;
+		public void setCancellation_policy(String cancellation_policy) {
+			this.cancellation_policy = cancellation_policy;
 		}
 
-		public User getUsuario() {
-			return usuario;
+		public User getUser() {
+			return user;
 		}
 
-		public void setUsuario(User usuario) {
-			this.usuario = usuario;
+		public void setUser(User user) {
+			this.user = user;
 		}
 
+		public Room getRoom() {
+			return room;
+		}
+
+		public void setRoom(Room room) {
+			this.room = room;
+		}
+
+	    
+	   
 	   
 	    
 	    

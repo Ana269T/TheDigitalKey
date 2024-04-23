@@ -23,13 +23,13 @@ public class UserController {
 	private IUserRepository userRepository;
 	
 	@GetMapping("/register")
-	public String mostrarFormulario(User user){
+	public String showForm(User user){
 		return "registro";
 	}
 	
 	@PostMapping("/register")
-	public String RegistroFormulario(User user){
-		System.out.print("inicio de registro");
+	public String RegistrationForm(User user){
+		System.out.print("start of registration");
 		//user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setRole("ROLE_USER");
 		userRepository.save(user);
@@ -37,13 +37,13 @@ public class UserController {
 	}
 		
 	@GetMapping("/login")
-	public String loginUsuario(@RequestParam String username, @RequestParam String password, Model model){
-		System.out.print("Entro al login");
+	public String loginUser(@RequestParam String username, @RequestParam String password, Model model){
+		System.out.print("enter the login");
 		Optional <User> user = userRepository.findByUsername(username);
 		if (username.equals(user.get().getUsername())&& password == user.get().getPassword()) {
-			System.out.print("Datos coinciden");
+			System.out.print("Data match");
 		}else {
-			System.out.print("Error en los datos de ingreso");
+			System.out.print("Input data error");
 		}
 		return "login";
 	}
