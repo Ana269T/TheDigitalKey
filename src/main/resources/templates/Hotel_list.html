@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel List</title>
+    <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .table {
+            margin: 0 auto; /* Centra la tabla horizontalmente */
+            width: 80%; /* Ajusta el ancho de la tabla */
+        }
+        .table th {
+            background-color: #f8f9fa; /* Cambia el color de fondo de las cabeceras de la tabla */
+        }
+        .table td {
+            vertical-align: middle; /* Centra verticalmente el contenido de las celdas */
+        }
+        .title {
+            text-align: center; /* Centra el título horizontalmente */
+            margin-top: 50px; /* Agrega un margen superior para separar el título de la tabla */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Hotel List</h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <a class="btn btn-success" th:href="@{/hotel/registrohotel}">
+            <i class="fas fa-plus"></i> Add Hotel
+        </a>
+        <tbody>
+            <tr th:each="hotel : ${hotels}">
+                <td th:text="${hotel.id}"></td>
+                <td th:text="${hotel.name}"></td>
+                <td th:text="${hotel.address}"></td>
+                <td>
+                    <a class="btn btn-primary" th:href="@{/hotel/{id}/room(id=${hotel.id})}">Agregar Habitaciones</a>
+                    <a class="btn btn-secondary" th:href="@{'/hotel/rooms/' + ${hotel.id}}">Ver Habitaciones</a>
+                    <button class="btn btn-info" th:href="@{'/hotel/edit/' + ${hotel.id}}">Editar</button>
+                    <button class="btn btn-danger" th:href="@{'/hotel/delete/' + ${hotel.id}}">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Agrega el enlace al archivo JavaScript de Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

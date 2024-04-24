@@ -1,5 +1,8 @@
 package com.TheDigitalKey.app.bd;
 
+import java.util.List;
+
+
 import jakarta.persistence.*;
 
 
@@ -22,6 +25,7 @@ public class Hotel {
 
      @Column(name = "Phone")
 	 private int phone;
+   
      
      @Column(name = "Classification")
 	 private String classification;
@@ -35,17 +39,24 @@ public class Hotel {
      @Column(name = "wifi")
 	 private String wifi;
 
-     // Definición de la relación ManyToOne con la entidad Departamento
      @ManyToOne
      @JoinColumn(name = "departamento_id", referencedColumnName = "id")
      private Department department_;
+     
+     @OneToMany(mappedBy = "hotel")
+     private List<Room> room;
+
+     @OneToMany(mappedBy = "hotel")
+     private List<booking> reservas;
+
 
 	public Hotel() {
 		super();
 	}
 
 	public Hotel(Long id, String name, String address, String department, int phone, String classification,
-			String state, int swimming_pool, String wifi, Department department_) {
+			String state, int swimming_pool, String wifi, Department department_, List<Room> habitaciones,
+			List<booking> reservas) {
 		super();
 		this.id = id;
 		Name = name;
@@ -57,6 +68,8 @@ public class Hotel {
 		this.swimming_pool = swimming_pool;
 		this.wifi = wifi;
 		this.department_ = department_;
+		this.room = habitaciones;
+		this.reservas = reservas;
 	}
 
 	public Long getId() {
@@ -139,8 +152,23 @@ public class Hotel {
 		this.department_ = department_;
 	}
 
+	public List<Room> getHabitaciones() {
+		return room;
+	}
 
+	public void setHabitaciones(List<Room> habitaciones) {
+		this.room = habitaciones;
+	}
+
+	public List<booking> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<booking> reservas) {
+		this.reservas = reservas;
+	}
+ 	
     
-	  
+	
 
 }

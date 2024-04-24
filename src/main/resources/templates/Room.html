@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro de Habitaciones</title>
+    <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Formulario de Registro de Habitaciones</h3>
+                <form th:action="@{/hotel/{id}/room(id=${hotel.idHotel})}" th:object="${habitacion}" method="post">
+                    <div class="form-group">
+                        <label for="room_number">Número de Habitación</label>
+                        <input type="text" class="form-control" id="room_number" name="Room_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="room_type">Tipo de Habitación</label>
+                        <input type="text" class="form-control" id="room_type" name="Room_type" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price_night">Precio por Noche</label>
+                        <input type="text" class="form-control" id="price_night" name="Price_night" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Details">Detalles</label>
+                        <textarea class="form-control" id="Details" name="Details" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                </form>
+                <!-- Elementos de error -->
+                <div class="error" id="error-room_number"></div>
+                <div class="error" id="error-room_type"></div>
+                <div class="error" id="error-price_night"></div>
+                <div class="error" id="error-Details"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function validarFormulario() {
+            var room_number = document.getElementById('room_number').value;
+            var room_type = document.getElementById('room_type').value;
+            var price_night = document.getElementById('price_night').value;
+            var details = document.getElementById('Details').value;
+
+            var error_room_number = document.getElementById('error-room_number');
+            var error_room_type = document.getElementById('error-room_type');
+            var error_price_night = document.getElementById('error-price_night');
+            var error_details = document.getElementById('error-Details');
+
+            if (room_number.trim() === '') {
+                error_room_number.textContent = 'Por favor, ingrese el número de habitación.';
+                return false;
+            } else {
+                error_room_number.textContent = '';
+            }
+
+            if (room_type.trim() === '') {
+                error_room_type.textContent = 'Por favor, ingrese el tipo de habitación.';
+                return false;
+            } else {
+                error_room_type.textContent = '';
+            }
+
+            if (price_night.trim() === '') {
+                error_price_night.textContent = 'Por favor, ingrese el precio por noche.';
+                return false;
+            } else if (isNaN(price_night)) {
+                error_price_night.textContent = 'Por favor, ingrese un valor numérico.';
+                return false;
+            } else {
+                error_price_night.textContent = '';
+            }
+
+            
+
+            return true; // Enviar el formulario si todas las validaciones pasan
+        }
+    </script>
+</body>
+</html>

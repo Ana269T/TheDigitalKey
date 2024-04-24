@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Formulario de Registro</h3>
+                <form th:action="@{/hotel/registrohotel}" method="post" th:object="${hotel}">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                        <small id="error-nombre" class="text-danger"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Dirección</label>
+                        <input type="text" class="form-control" id="address" name="address" required>
+                    </div>
+                   <div class="form-group">
+                        <label for="department">Departamento</label>
+                        <select class="form-control" id="department" name="department" required>
+                            <option value="" disabled selected>Selecciona un departamento</option>
+                            <option value="Amazonas">Amazonas</option>
+                            <option value="Antioquia">Antioquia</option>
+                            <option value="Antioquia">Boyacá</option>
+                            <option value="Antioquia">Caldas</option>
+                            <option value="Antioquia">Cundinamarca</option>
+                            <option value="Antioquia">Huila</option>
+                            <option value="Antioquia">Norte de Santander</option>
+                            <option value="Antioquia">Quindío</option>
+                            <option value="Antioquia">Risaralda</option>
+                            <option value="Antioquia">Santander</option>
+                            <option value="Antioquia">Tolima</option>
+                           
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                        <small id="error-telefono" class="text-danger"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="classification">Clasificación</label>
+                        <input type="text" class="form-control" id="classification" name="classification" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">Estado</label>
+                        <select class="form-control" id="state" name="state" required>
+                            <option value="" disabled selected>Selecciona un estado</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="swimming_pool">Piscina</label>
+                        <select class="form-control" id="swimming_pool" name="swimming_pool" required>
+                            <option value="" disabled selected>¿Tiene piscina?</option>
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="wifi">Wi-Fi</label>
+                        <input type="text" class="form-control" id="wifi" name="wifi" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agrega los enlaces a los archivos JS de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function validarFormulario() {
+            var nombre = document.getElementById('name').value;
+            var telefono = document.getElementById('phone').value;
+
+            var regexSoloLetras = /^[a-zA-Z\s]*$/; // Solo letras y espacios
+            var regexCorreo = /\S+@\S+\.\S+/; // Correo electrónico válido
+            var regexSoloNumeros = /^\d+$/; // Solo números
+
+            var errorNombre = document.getElementById('error-nombre');
+            var errorTelefono = document.getElementById('error-telefono');
+
+            // Validar Nombre
+            if (!nombre.match(regexSoloLetras)) {
+                errorNombre.textContent = 'Por favor, ingrese solo letras y espacios.';
+                return false;
+            } else {
+                errorNombre.textContent = '';
+            }
+
+            // Validar Teléfono
+            if (!telefono.match(regexSoloNumeros)) {
+                errorTelefono.textContent = 'Por favor, ingrese solo números.';
+                return false;
+            } else {
+                errorTelefono.textContent = '';
+            }
+
+            return true; 
+        }
+    </script>
+</body>
+</html>
+

@@ -30,22 +30,26 @@ public class booking {
 	 @Column(name = "Cancellation_policy")
 	 private String cancellation_policy;
 	 
-	 // Definición de la relación ManyToOne con la entidad Usuario
+	    
 	    @ManyToOne
 	    @JoinColumn(name = "user_id", referencedColumnName = "id")
-	    private User user;
-	    
-	    // Definición de la relación ManyToOne con la entidad Departamento
+	    private User usuario;
+
 	    @ManyToOne
 	    @JoinColumn(name = "room_id", referencedColumnName = "id")
 	    private Room room;
+
+	    @ManyToOne
+	    @JoinColumn(name = "id_hotel", referencedColumnName = "id")
+	    private Hotel hotel;
+
 
 		public booking() {
 			super();
 		}
 
 		public booking(Long id, String date_entry, String date_departure, String reservation_status, int total_price,
-				String payment_form, String cancellation_policy, User user, Room room) {
+				String payment_form, String cancellation_policy, User user, Room room, Hotel id_hotel) {
 			super();
 			this.id = id;
 			this.date_entry = date_entry;
@@ -54,8 +58,9 @@ public class booking {
 			this.total_price = total_price;
 			this.payment_form = payment_form;
 			this.cancellation_policy = cancellation_policy;
-			this.user = user;
+			this.usuario = user;
 			this.room = room;
+			this.hotel = id_hotel;
 		}
 
 		public Long getId() {
@@ -115,11 +120,11 @@ public class booking {
 		}
 
 		public User getUser() {
-			return user;
+			return usuario;
 		}
 
 		public void setUser(User user) {
-			this.user = user;
+			this.usuario = user;
 		}
 
 		public Room getRoom() {
@@ -130,7 +135,15 @@ public class booking {
 			this.room = room;
 		}
 
+		public Hotel getId_hotel() {
+			return hotel;
+		}
+
+		public void setId_hotel(Hotel id_hotel) {
+			this.hotel = id_hotel;
+		}
 	    
+	 
 	   
 	   
 	    

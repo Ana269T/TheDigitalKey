@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 @Table(name = "User")
 
 public class User { 
+	
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
@@ -19,8 +20,7 @@ public class User {
 	 @Column(name = "last names")
 	 private String last_Names;
      
-     // card es cedula
-	 @Column(name = "ID")
+	 @Column(name = "ID_card")
 	 private String card;
 
 	 @Column(name = "user name" , unique = true )
@@ -34,7 +34,7 @@ public class User {
      
      private String role;
     
-     @OneToMany(mappedBy = "user")
+     @OneToMany(mappedBy = "usuario")
      private List<booking> booking;
 
 	public User() {
