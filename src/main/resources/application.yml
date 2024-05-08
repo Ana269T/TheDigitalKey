@@ -6,6 +6,12 @@ spring:
        ddl-auto: update
      show-sql: true 
    datasource:
-     url: jdbc:mysql://localhost:3306/TheDigitalKey?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=True
-     username: root
-     password: root
+     url : jdbc:mysql://u1zqlv7fqgzrac0h:SQiv96W0wALklSXVHRsc@bnirwustrv8c646hsdmr-mysql.services.clever-cloud.com:3306/bnirwustrv8c646hsdmr?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=True
+     username: u1zqlv7fqgzrac0h
+     password: SQiv96W0wALklSXVHRsc
+cloud:
+  name: dvtskkxhm
+  secret: KnopXyU8cThMo3wfBEAwQTGjvPI
+  key: 351934131483787
+    
+     

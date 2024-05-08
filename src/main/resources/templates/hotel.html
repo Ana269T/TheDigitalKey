@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Registro</title>
+    <title>Registro de hoteles</title>
     <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -11,64 +11,59 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">Formulario de Registro</h3>
-                <form th:action="@{/hotel/registrohotel}" method="post" th:object="${hotel}">
+                <h3 class="card-title">Registro de hoteles</h3>
+                 <form th:action="@{/hotel/registrohotel}" method="post" th:object="${hotel}">
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <input type="text" class="form-control" id="name" name="name" th:field="*{Name}" required>
                         <small id="error-nombre" class="text-danger"></small>
                     </div>
                     <div class="form-group">
                         <label for="address">Dirección</label>
-                        <input type="text" class="form-control" id="address" name="address" required>
+                        <input type="text" class="form-control" id="address" name="address" th:field="*{address}" required>
                     </div>
                    <div class="form-group">
                         <label for="department">Departamento</label>
-                        <select class="form-control" id="department" name="department" required>
+                        <select class="form-control" id="department" name="department" th:field="*{department}" required>
                             <option value="" disabled selected>Selecciona un departamento</option>
                             <option value="Amazonas">Amazonas</option>
                             <option value="Antioquia">Antioquia</option>
-                            <option value="Antioquia">Boyacá</option>
-                            <option value="Antioquia">Caldas</option>
-                            <option value="Antioquia">Cundinamarca</option>
-                            <option value="Antioquia">Huila</option>
-                            <option value="Antioquia">Norte de Santander</option>
-                            <option value="Antioquia">Quindío</option>
-                            <option value="Antioquia">Risaralda</option>
-                            <option value="Antioquia">Santander</option>
-                            <option value="Antioquia">Tolima</option>
+                            <option value="Boyacá">Boyacá</option>
+                            <option value="Caldas">Caldas</option>
+                            <option value="Cundinamarca">Cundinamarca</option>
+                            <option value="Huila">Huila</option>
+                            <option value="Norte">Norte de Santander</option>
+                            <option value="Quindío">Quindío</option>
+                            <option value="Risaralda">Risaralda</option>
+                            <option value="Santander">Santander</option>
+                            <option value="Tolima">Tolima</option>
                            
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="phone">Teléfono</label>
-                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                        <input type="tel" class="form-control" id="phone" name="phone" th:field="*{phone}" required>
                         <small id="error-telefono" class="text-danger"></small>
                     </div>
-                    <div class="form-group">
-                        <label for="classification">Clasificación</label>
-                        <input type="text" class="form-control" id="classification" name="classification" required>
-                    </div>
+                   <div class=“form-group”> 
+					   <label for=“classification”>Clasificación</label>
+					    <select class=“form-control” id=“classification” name=“classification” th:field="*{classification}" required>
+					    <option value=“1”>1</option>
+					     <option value=“2”>2</option>
+					     <option value=“3”>3</option>
+					     <option value=“4”>4</option>
+					     <option value=“5”>5</option> 
+					     </select> 
+					 </div>
                     <div class="form-group">
                         <label for="state">Estado</label>
-                        <select class="form-control" id="state" name="state" required>
+                        <select class="form-control" id="state" name="state" th:field="*{state}"  required>
                             <option value="" disabled selected>Selecciona un estado</option>
                             <option value="activo">Activo</option>
                             <option value="inactivo">Inactivo</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="swimming_pool">Piscina</label>
-                        <select class="form-control" id="swimming_pool" name="swimming_pool" required>
-                            <option value="" disabled selected>¿Tiene piscina?</option>
-                            <option value="si">Sí</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="wifi">Wi-Fi</label>
-                        <input type="text" class="form-control" id="wifi" name="wifi" required>
-                    </div>
+
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                 </form>
             </div>

@@ -45,7 +45,8 @@ public class UserController {
 		}else {
 			System.out.print("Input data error");
 		}
-		return "logins";
+		return "hotel";
 	}
+
 
 }

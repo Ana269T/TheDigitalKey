@@ -1,5 +1,7 @@
 package com.TheDigitalKey.app.controllers;
 
+import java.awt.SystemColor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +17,6 @@ import com.TheDigitalKey.app.bd.Hotel;
 import com.TheDigitalKey.app.bd.Room;
 
 
-
-
 @Controller
 @RequestMapping("/hotel")
 public class HotelController {
@@ -28,7 +28,8 @@ public class HotelController {
 	private IHabitacionRepository habitacionRepository;
 
 	@GetMapping("/registrohotel")
-	public String formularioHotel(Hotel hotel) {
+	public String formularioHotel(Hotel hotel, Model model) {
+		System.out.print("entra");
 		return "hotel";
 	}
 

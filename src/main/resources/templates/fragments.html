@@ -4,22 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Página Web</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        section {
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+    </style>
 </head>
 <body>
     <header th:fragment="alv">
-        <h1>Bienvenido a Mi Página Web</h1>
+       <h1>Bienvenido a Mi Página Web</h1>
     </header>
     <nav th:fragment="alv2">
         <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#sobre-mi">Sobre Mí</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a th:href="@{'#sobre-mi'}">Sobre Mí</a></li>
+            <li><a th:href="@{'#contacto'}">Contacto</a></li>
         </ul>
     </nav>
-    <section id="inicio">
-        <h2>Inicio</h2>
-        <p>Esta es la sección de inicio de mi página web.</p>
-    </section>
+    
     <section id="sobre-mi">
         <h2>Sobre Mí</h2>
         <p>Aquí puedes encontrar información sobre mí.</p>
@@ -29,7 +74,7 @@
         <p>Si deseas contactarme, puedes hacerlo a través de esta sección.</p>
     </section>
     <footer>
-        <p>© 2024 Mi Página Web</p>
+        <p>© 2024</p>
     </footer>
 </body>
 </html>

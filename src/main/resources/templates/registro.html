@@ -2,54 +2,104 @@
 <html lang="es">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Formulario de Registro</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Estilos personalizados */
+        body {
+            background-color: rgb(165, 165, 165); /* Cambié el color de fondo */
+            font-family: Arial, sans-serif; /* Cambié la fuente */
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: #333;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        /* Botón */
+        .btn-primary {
+            background-color: rgb(0, 128, 64); /* Cambié el color del botón */
+            border-color: rgb(0, 64, 0); /* Cambié el color del borde del botón */
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #495057; /* Cambié el color del botón al pasar el mouse */
+            border-color: #495057; /* Cambié el color del borde del botón al pasar el mouse */
+        }
+
+        /* Ajuste de tamaño para dispositivos móviles */
+        @media (max-width: 576px) {
+            .card {
+                border-radius: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
-	<div class="container mt-5">
-		<div class="card">
-			<div class="card-body">
-				<h2 class="card-title text-center">Formulario de Registro</h2>
-				<form action="#" th:action="@{/usuario/registro}" th:object="${usuario}" method="post">
-					<div class="mb-3">
-						<label for="nombre" class="form-label">Nombres</label>
-						<input type="text" th:fiel="*{nombres}" class="form-control" id="Nombres"
-							name="Nombres" required>
-					</div>
-					<div class="mb-3">
-						<label for="apellidos" class="form-label">Apellidos</label>
-						<input type="text" th:fiel="*{apellidos}" class="form-control" id="Apellidos"
-							name="Apellidos" required>
-					</div>
-					<div class="mb-3">
-						<label for="cedula" class="form-label">Cédula</label>
-						<input type="text" th:fiel="*{cedula}" class="form-control" id="Cedula" name="Cedula" required>
-					</div>
-					<div class="mb-3">
-						<label for="email" class="form-label">Correo Electrónico</label>
-						<input type="email" th:field="*{correo}" class="form-control" id="correo" name="correo"
-							required>
-					</div>
-					<div class="mb-3">
-						<label for="contrasena" class="form-label">Contraseña</label>
-						<input type="password" th:field="*{contrasena}" class="form-control" id="contraseña"
-							name="contraseña" required @Digits(integer=4, fraction=0)>
-					</div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Registro de usuarios</h2>
+                <form id="registrationForm" action="#" method="post" onsubmit="return validateForm()">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="names" class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="names" name="names" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="last_Names" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="last_Names" name="last_Names" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="card" class="form-label">Cédula</label>
+                        <input type="text" class="form-control" id="card" name="card" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" required>
+                        <small id="phoneHelp" class="form-text text-muted">Formato: 10 dígitos numéricos</small>
+                    </div>
+                    <div class="text-center"> <!-- Div para centrar el botón -->
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function validateForm() {
+            var phoneInput = document.getElementById("phone");
+            var phonePattern = /[0-9]{10}/;
 
-					<div class="mb-3">
-						<label for="telefono" class="form-label">Telefono</label>
-						<input type="text" th:field="*{telefono}" class="form-control" id="telefono" name="telefono"
-							required>
-					</div>
-					<button type="submit" class="btn btn-primary">Registrarse</button>
-				</form>
-			</div>
-		</div>
-	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            if (!phonePattern.test(phoneInput.value)) {
+                alert("Por favor ingrese un número de teléfono válido (10 dígitos numéricos).");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 
 </html>
