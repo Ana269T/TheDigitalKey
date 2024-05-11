@@ -4,38 +4,37 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "User")
 
-public class User { 
-	
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
-	 
-	 @Column(name = "names")
-	 private String names;
+public class User {
 
-	 @Column(name = "last names")
-	 private String last_Names;
-     
-	 @Column(name = "ID_card")
-	 private String card;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	 @Column(name = "user name" , unique = true )
-	 private String username;
-	 
-	 @Column(name = "password")
-	 private String password;
-     
-     @Column(name = "phone")
-	 private String phone; 
-     
-     private String role;
-    
-     @OneToMany(mappedBy = "usuario")
-     private List<booking> booking;
+	@Column(name = "names")
+	private String names;
+
+	@Column(name = "last names")
+	private String last_Names;
+
+	@Column(name = "ID_card")
+	private String card;
+
+	@Column(name = "user name", unique = true)
+	private String username;
+
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "phone")
+	private String phone;
+
+	private String role;
+
+	@OneToMany(mappedBy = "usuario")
+	private List<booking> booking;
 
 	public User() {
 		super();
@@ -126,11 +125,20 @@ public class User {
 	public void setBooking(List<booking> booking) {
 		this.booking = booking;
 	}
- 
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", names='" + names + '\'' +
+				", last_Names='" + last_Names + '\'' +
+				", card='" + card + '\'' +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", phone='" + phone + '\'' +
+				", role='" + role + '\'' +
+				", booking=" + booking +
+				'}';
+	}
 
 }
-
-
-
-
-
