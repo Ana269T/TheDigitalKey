@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    
+    <title>Upload Image</title>
+</head>
+
+<body>
+    <!-- Inicio del Cuerpo de la Pagina -->
+
+    <div class="container">
+        <h1 class="text-center mt-5">Subir imagen</h1>
+        <form th:action="@{/upload-image}" method="post"  enctype="multipart/form-data" name="upload-image">
+            <div class="row justify-content-center">
+                <div class="form-group">
+                    <label for="file-upload" class="subir btn btn-primary">
+                        <i class="fas fa-cloud-upload-alt"></i> 
+                        <input type="file" id="file-upload" accept="image/*" class="form-control-file" style='display: none;' name="file">
+                    </label>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 mt-5">
+                    <input type="submit" class="btn btn-primary" value="Enviar">
+                </div>
+            </div>    
+        </form>
+    </div>
+
+</body>
+
+</html>

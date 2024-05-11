@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,32 +51,32 @@
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title text-center mb-4">Registro de usuarios</h2>
-                <form id="registrationForm" action="#" method="post" onsubmit="return validateForm()">
+                <form action="#" th:action="@{/user/register}" th:object="${user}" method="post">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="names" class="form-label">Nombres</label>
-                            <input type="text" class="form-control" id="names" name="names" required>
+                            <input type="text" th:field="*{names}" class="form-control" id="names" name="names" required>
                         </div>
                         <div class="col-md-6">
                             <label for="last_Names" class="form-label">Apellidos</label>
-                            <input type="text" class="form-control" id="last_Names" name="last_Names" required>
+                            <input type="text" th:field="*{last_Names}" class="form-control" id="last_Names" name="last_Names" required>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="card" class="form-label">Cédula</label>
-                        <input type="text" class="form-control" id="card" name="card" required>
+                        <input type="text" th:field="*{card}" class="form-control" id="card" name="card" required>
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="username" name="username" required>
+                        <input type="email" th:field="*{username}" class="form-control" id="username" name="username" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" th:field="*{password}" class="form-control" id="password" name="password" required>
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" required>
+                        <input type="tel" th:field="*{phone}" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" required>
                         <small id="phoneHelp" class="form-text text-muted">Formato: 10 dígitos numéricos</small>
                     </div>
                     <div class="text-center"> <!-- Div para centrar el botón -->
