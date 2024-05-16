@@ -17,7 +17,7 @@
         <div class="card">
             <div class="card-body">
                 <h3 class="card-title">Formulario de Registro de Habitaciones</h3>
-                <form th:action="@{/hotel/{id}/room(id=${hotel.id})}" th:object="${habitacion}" method="post">
+                <form th:action="@{/hotel/{id}/room(id=${hotel.id})}" th:object="${room}" method="post">
                     <div class="form-group">
                         <label for="room_number">Número de Habitación</label>
                         <input type="text" class="form-control" id="room_number" name="Room_number" th:object="${Room_number}" required>
