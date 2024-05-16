@@ -8,7 +8,7 @@ public class AppController {
 	
 	@GetMapping("")
 	public String login() {
-		return "home";
+		return "login-app";
 	}
 
 }

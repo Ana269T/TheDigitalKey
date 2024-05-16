@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Detalles del Hotel</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <h1 th:text="${hotel.name}">Nombre del Hotel</h1>
+    <p th:text="${hotel.address}">Dirección</p>
+    <p th:text="'Clasificación: ' + ${hotel.classification}"></p>
+    <p>
+        <span th:text="'Piscina: ' + (${hotel.swimming_pool == 1 ? 'Sí' : 'No'})"></span>
+        <span th:text="' | WiFi: ' + (${hotel.wifi})"></span>
+    </p>
+    <div th:each="room : ${hotel.room}">
+        <h3 th:text="'Habitación ' + ${room.roomNumber}"></h3>
+        <p th:text="'Tipo: ' + ${room.roomType}"></p>
+        <p th:text="'Precio por noche: ' + ${room.pricePerNight}"></p>
+        <p th:text="'Disponibilidad: ' + (${room.isAvailable} ? 'Disponible' : 'No Disponible')"></p>
+        <a th:if="${room.isAvailable}" th:href="@{/reservations/book/{id}(id=${room.id})}">Reservar</a>
+    </div>
+</body>
+</html>

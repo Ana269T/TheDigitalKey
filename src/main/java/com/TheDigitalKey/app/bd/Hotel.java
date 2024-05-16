@@ -14,8 +14,11 @@ public class Hotel {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
 	 
+	 @Column(name = "img")
+	 private String img; 
+	 
 	 @Column(name = "name")
-	 private String Name;
+	 private String name;
 
 	 @Column(name = "Address")
 	 private String address;
@@ -54,12 +57,15 @@ public class Hotel {
 		super();
 	}
 
-	public Hotel(Long id, String name, String address, String department, int phone, String classification,
-			String state, int swimming_pool, String wifi, Department department_, List<Room> habitaciones,
+	
+
+	public Hotel(Long id, String img, String name, String address, String department, int phone, String classification,
+			String state, int swimming_pool, String wifi, Department department_, List<Room> room,
 			List<booking> reservas) {
 		super();
 		this.id = id;
-		Name = name;
+		this.img = img;
+		this.name = name;
 		this.address = address;
 		this.department = department;
 		this.phone = phone;
@@ -68,9 +74,11 @@ public class Hotel {
 		this.swimming_pool = swimming_pool;
 		this.wifi = wifi;
 		this.department_ = department_;
-		this.room = habitaciones;
+		this.room = room;
 		this.reservas = reservas;
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -80,12 +88,32 @@ public class Hotel {
 		this.id = id;
 	}
 
+	public String getImg() {
+		return img;
+	}
+
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+
+	public List<Room> getRoom() {
+		return room;
+	}
+
+
+	public void setRoom(List<Room> room) {
+		this.room = room;
+	}
+
+
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		name = name;
 	}
 
 	public String getAddress() {

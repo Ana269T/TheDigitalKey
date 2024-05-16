@@ -51,7 +51,7 @@
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title text-center mb-4">Registro de usuarios</h2>
-                <form action="#" th:action="@{/user/register}" th:object="${user}" method="post">
+                <form action="#" th:action="@{/user/register}" th:object="${user}" method="post" onsubmit="return validateForm()">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="names" class="form-label">Nombres</label>
@@ -69,6 +69,7 @@
                     <div class="mb-3">
                         <label for="username" class="form-label">Correo Electrónico</label>
                         <input type="email" th:field="*{username}" class="form-control" id="username" name="username" required>
+                        <small id="emailError" class="form-text text-danger"></small>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
@@ -96,6 +97,19 @@
                 alert("Por favor ingrese un número de teléfono válido (10 dígitos numéricos).");
                 return false;
             }
+
+           
+            var emailInput = document.getElementById("username");
+            var emailError = document.getElementById("emailError");
+            var registeredEmails = ["anamria471@gmail.com", "correo2@example.com"];
+
+            if (registeredEmails.includes(emailInput.value)) {
+                emailError.textContent = "Este correo electrónico ya está registrado.";
+                return false;
+            } else {
+                emailError.textContent = "";
+            }
+
             return true;
         }
     </script>
