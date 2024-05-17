@@ -41,11 +41,7 @@ public class UserController {
 		User userSession = user.get();
 		if (username.equals(userSession.getUsername()) && password.equals(userSession.getPassword())) {
 			return "home";
-<<<<<<< HEAD
 		} else {
-=======
-		}else {
->>>>>>> 711caea448228a3e71940e62ac9b50d7e95cc981
 			return "login-app";
 		}
 	}

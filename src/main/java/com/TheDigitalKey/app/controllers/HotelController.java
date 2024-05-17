@@ -1,6 +1,5 @@
 package com.TheDigitalKey.app.controllers;
 
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
@@ -38,11 +37,10 @@ import com.itextpdf.text.pdf.PdfWriter;
 @Controller
 @RequestMapping("/hotel")
 public class HotelController {
-	
-	
+
 	@Autowired
 	private CloudinaryConfig cloudc;
-	
+
 	@Autowired
 	private IHotel hotelRepository;
 
@@ -69,16 +67,15 @@ public class HotelController {
 	}
 
 	@GetMapping("/{id}/room")
-	public String guardarHabitacion(@PathVariable Long id,Room habitacion, Model model) {
+	public String guardarHabitacion(@PathVariable Long id, Room habitacion, Model model) {
 		System.out.println("Ingreso al metodo de guardado de habitacion");
 		System.out.println("Id del hotel: " + id);
 		model.addAttribute("hotel", hotelRepository.findById(id).get());
 		return "habitacion";
 	}
 
-
 	@PostMapping("/{id}/room")
-	public String guardarHabitacion(@PathVariable Long id, Room  habitacion) {
+	public String guardarHabitacion(@PathVariable Long id, Room habitacion) {
 		System.out.println("Ingreso al metodo de BUSCANDO de habitacion");
 		System.out.println("Id del hotel: " + id);
 
@@ -88,25 +85,27 @@ public class HotelController {
 		habitacionRepository.save(habitacion);
 		return "redirect:/hotel/hotels";
 	}
-	
-	//@GetMapping("")
-	//public String addProductoGet(Model model) {
-	//	return "uploadimage";
-	//}
 
-	//@PostMapping("/upload-image")
-	//public String addProducto(Model model, @RequestParam("file") MultipartFile file) {
+	// @GetMapping("")
+	// public String addProductoGet(Model model) {
+	// return "uploadimage";
+	// }
 
-		//try {
-		//	Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
-		//	System.out.println(uploadResult.get("url").toString());
+	// @PostMapping("/upload-image")
+	// public String addProducto(Model model, @RequestParam("file") MultipartFile
+	// file) {
 
-		//} catch (Exception e) {
-			//System.out.println(e.getMessage());
-		//}
+	// try {
+	// Map uploadResult = cloudc.upload(file.getBytes(),
+	// ObjectUtils.asMap("resourcetype", "auto"));
+	// System.out.println(uploadResult.get("url").toString());
 
-		//return "redirect:/";
-	//}
+	// } catch (Exception e) {
+	// System.out.println(e.getMessage());
+	// }
+
+	// return "redirect:/";
+	// }
 
 	@GetMapping("/open-pdf")
 	public String openPDF(Model model) {
@@ -162,8 +161,5 @@ public class HotelController {
 			return ResponseEntity.status(500).build();
 		}
 	}
-	
 
-
-	
 }

@@ -1,156 +1,141 @@
 package com.TheDigitalKey.app.bd;
 
-
 import jakarta.persistence.*;
-
 
 @Entity
 @Table(name = "Booking")
 
-public class booking { 
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
-	 
-	 @Column(name = "Date_entry")
-	 private String date_entry;
+public class booking {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	 @Column(name = "Date_departure")
-	 private String date_departure;
-	 
-	 @Column(name = "Reservation_status")
-	 private String reservation_status;
+	@Column(name = "Date_entry")
+	private String date_entry;
 
-     @Column(name = "Total_price")
-	 private int total_price;
-     
-     @Column(name = "Payment_form")
-	 private String payment_form;
+	@Column(name = "Date_departure")
+	private String date_departure;
 
-	 @Column(name = "Cancellation_policy")
-	 private String cancellation_policy;
-	 
-	    
-	    @ManyToOne
-	    @JoinColumn(name = "user_id", referencedColumnName = "id")
-	    private User usuario;
+	@Column(name = "Reservation_status")
+	private String reservation_status;
 
-	    @ManyToOne
-	    @JoinColumn(name = "room_id", referencedColumnName = "id")
-	    private Room room;
+	@Column(name = "Total_price")
+	private int total_price;
 
-	    @ManyToOne
-	    @JoinColumn(name = "id_hotel", referencedColumnName = "id")
-	    private Hotel hotel;
+	@Column(name = "Payment_form")
+	private String payment_form;
 
+	@Column(name = "Cancellation_policy")
+	private String cancellation_policy;
 
-		public booking() {
-			super();
-		}
+	@ManyToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	private User usuario;
 
-		public booking(Long id, String date_entry, String date_departure, String reservation_status, int total_price,
-				String payment_form, String cancellation_policy, User user, Room room, Hotel id_hotel) {
-			super();
-			this.id = id;
-			this.date_entry = date_entry;
-			this.date_departure = date_departure;
-			this.reservation_status = reservation_status;
-			this.total_price = total_price;
-			this.payment_form = payment_form;
-			this.cancellation_policy = cancellation_policy;
-			this.usuario = user;
-			this.room = room;
-			this.hotel = id_hotel;
-		}
+	@ManyToOne
+	@JoinColumn(name = "room_id", referencedColumnName = "id")
+	private Room room;
 
-		public Long getId() {
-			return id;
-		}
+	@ManyToOne
+	@JoinColumn(name = "id_hotel", referencedColumnName = "id")
+	private Hotel hotel;
 
-		public void setId(Long id) {
-			this.id = id;
-		}
+	public booking() {
+		super();
+	}
 
-		public String getDate_entry() {
-			return date_entry;
-		}
+	public booking(Long id, String date_entry, String date_departure, String reservation_status, int total_price,
+			String payment_form, String cancellation_policy, User user, Room room, Hotel id_hotel) {
+		super();
+		this.id = id;
+		this.date_entry = date_entry;
+		this.date_departure = date_departure;
+		this.reservation_status = reservation_status;
+		this.total_price = total_price;
+		this.payment_form = payment_form;
+		this.cancellation_policy = cancellation_policy;
+		this.usuario = user;
+		this.room = room;
+		this.hotel = id_hotel;
+	}
 
-		public void setDate_entry(String date_entry) {
-			this.date_entry = date_entry;
-		}
+	public Long getId() {
+		return id;
+	}
 
-		public String getDate_departure() {
-			return date_departure;
-		}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-		public void setDate_departure(String date_departure) {
-			this.date_departure = date_departure;
-		}
+	public String getDate_entry() {
+		return date_entry;
+	}
 
-		public String getReservation_status() {
-			return reservation_status;
-		}
+	public void setDate_entry(String date_entry) {
+		this.date_entry = date_entry;
+	}
 
-		public void setReservation_status(String reservation_status) {
-			this.reservation_status = reservation_status;
-		}
+	public String getDate_departure() {
+		return date_departure;
+	}
 
-		public int getTotal_price() {
-			return total_price;
-		}
+	public void setDate_departure(String date_departure) {
+		this.date_departure = date_departure;
+	}
 
-		public void setTotal_price(int total_price) {
-			this.total_price = total_price;
-		}
+	public String getReservation_status() {
+		return reservation_status;
+	}
 
-		public String getPayment_form() {
-			return payment_form;
-		}
+	public void setReservation_status(String reservation_status) {
+		this.reservation_status = reservation_status;
+	}
 
-		public void setPayment_form(String payment_form) {
-			this.payment_form = payment_form;
-		}
+	public int getTotal_price() {
+		return total_price;
+	}
 
-		public String getCancellation_policy() {
-			return cancellation_policy;
-		}
+	public void setTotal_price(int total_price) {
+		this.total_price = total_price;
+	}
 
-		public void setCancellation_policy(String cancellation_policy) {
-			this.cancellation_policy = cancellation_policy;
-		}
+	public String getPayment_form() {
+		return payment_form;
+	}
 
-		public User getUser() {
-			return usuario;
-		}
+	public void setPayment_form(String payment_form) {
+		this.payment_form = payment_form;
+	}
 
-		public void setUser(User user) {
-			this.usuario = user;
-		}
+	public String getCancellation_policy() {
+		return cancellation_policy;
+	}
 
-		public Room getRoom() {
-			return room;
-		}
+	public void setCancellation_policy(String cancellation_policy) {
+		this.cancellation_policy = cancellation_policy;
+	}
 
-		public void setRoom(Room room) {
-			this.room = room;
-		}
+	public User getUser() {
+		return usuario;
+	}
 
-		public Hotel getId_hotel() {
-			return hotel;
-		}
+	public void setUser(User user) {
+		this.usuario = user;
+	}
 
-		public void setId_hotel(Hotel id_hotel) {
-			this.hotel = id_hotel;
-		}
-	    
-	 
-	   
-	   
-	    
-	    
+	public Room getRoom() {
+		return room;
+	}
 
-	    
-		
-	 
+	public void setRoom(Room room) {
+		this.room = room;
+	}
 
+	public Hotel getId_hotel() {
+		return hotel;
+	}
+
+	public void setId_hotel(Hotel id_hotel) {
+		this.hotel = id_hotel;
+	}
 }

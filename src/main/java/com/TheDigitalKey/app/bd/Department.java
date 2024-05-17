@@ -7,16 +7,16 @@ import java.util.List;
 @Table(name = "Department")
 public class Department {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "name")
-    private String name;
+	@Column(name = "name")
+	private String name;
 
-    // Relación OneToMany con la clase Hotel
-    @OneToMany(mappedBy = "department")
-    private List<Hotel> hoteles;
+	// Relación OneToMany con la clase Hotel
+	@OneToMany(mappedBy = "department")
+	private List<Hotel> hoteles;
 
 	public Department() {
 		super();
@@ -53,10 +53,4 @@ public class Department {
 		this.hoteles = hoteles;
 	}
 
-   
-    
-    
-    
-
-    
 }

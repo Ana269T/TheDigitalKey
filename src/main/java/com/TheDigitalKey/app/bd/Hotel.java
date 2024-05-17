@@ -2,62 +2,56 @@ package com.TheDigitalKey.app.bd;
 
 import java.util.List;
 
-
 import jakarta.persistence.*;
-
 
 @Entity
 @Table(name = "Hotel")
 
-public class Hotel { 
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
-	 
-	 @Column(name = "img")
-	 private String img; 
-	 
-	 @Column(name = "name")
-	 private String name;
+public class Hotel {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	 @Column(name = "Address")
-	 private String address;
-	 
-	 @Column(name = "Department")
-	 private String department;
+	@Column(name = "img")
+	private String img;
 
-     @Column(name = "Phone")
-	 private int phone;
-   
-     
-     @Column(name = "Classification")
-	 private String classification;
+	@Column(name = "name")
+	private String name;
 
-	 @Column(name = "State")
-	 private String state;
-	 
-	 @Column(name = "Swimming_pool")
-	 private int swimming_pool;
-     
-     @Column(name = "wifi")
-	 private String wifi;
+	@Column(name = "Address")
+	private String address;
 
-     @ManyToOne
-     @JoinColumn(name = "departamento_id", referencedColumnName = "id")
-     private Department department_;
-     
-     @OneToMany(mappedBy = "hotel")
-     private List<Room> room;
+	@Column(name = "Department")
+	private String department;
 
-     @OneToMany(mappedBy = "hotel")
-     private List<booking> reservas;
+	@Column(name = "Phone")
+	private int phone;
 
+	@Column(name = "Classification")
+	private String classification;
+
+	@Column(name = "State")
+	private String state;
+
+	@Column(name = "Swimming_pool")
+	private int swimming_pool;
+
+	@Column(name = "wifi")
+	private String wifi;
+
+	@ManyToOne
+	@JoinColumn(name = "departamento_id", referencedColumnName = "id")
+	private Department department_;
+
+	@OneToMany(mappedBy = "hotel")
+	private List<Room> room;
+
+	@OneToMany(mappedBy = "hotel")
+	private List<booking> reservas;
 
 	public Hotel() {
 		super();
 	}
-
-	
 
 	public Hotel(Long id, String img, String name, String address, String department, int phone, String classification,
 			String state, int swimming_pool, String wifi, Department department_, List<Room> room,
@@ -78,8 +72,6 @@ public class Hotel {
 		this.reservas = reservas;
 	}
 
-
-
 	public Long getId() {
 		return id;
 	}
@@ -92,28 +84,24 @@ public class Hotel {
 		return img;
 	}
 
-
 	public void setImg(String img) {
 		this.img = img;
 	}
-
 
 	public List<Room> getRoom() {
 		return room;
 	}
 
-
 	public void setRoom(List<Room> room) {
 		this.room = room;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
-		name = name;
+		this.name = name;
 	}
 
 	public String getAddress() {
@@ -195,8 +183,5 @@ public class Hotel {
 	public void setReservas(List<booking> reservas) {
 		this.reservas = reservas;
 	}
- 	
-    
-	
 
 }

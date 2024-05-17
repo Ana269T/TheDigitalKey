@@ -2,40 +2,37 @@ package com.TheDigitalKey.app.bd;
 
 import java.util.List;
 
-
 import jakarta.persistence.*;
-
 
 @Entity
 @Table(name = "Room")
 
-public class Room { 
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
-	 
-	 @Column(name = "Room_number")
-	 private String room_number;
+public class Room {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	 @Column(name = "Room_type")
-	 private String room_type;
-	 
-	 @Column(name = "Price_night")
-	 private String price_night;
+	@Column(name = "Room_number")
+	private String room_number;
 
-     @Column(name = "Availability")
-	 private int availability; 
-     
-     @Column(name = "Details")
-	 private String Details;
+	@Column(name = "Room_type")
+	private String room_type;
 
-     
-     @OneToMany(mappedBy = "room")
-     private List<booking> booking;
+	@Column(name = "Price_night")
+	private String price_night;
 
-     @ManyToOne
-     @JoinColumn(name = "hotel_id" , referencedColumnName = "id")
-     private Hotel hotel;
+	@Column(name = "Availability")
+	private int availability;
+
+	@Column(name = "Details")
+	private String Details;
+
+	@OneToMany(mappedBy = "room")
+	private List<booking> booking;
+
+	@ManyToOne
+	@JoinColumn(name = "hotel_id", referencedColumnName = "id")
+	private Hotel hotel;
 
 	public Room() {
 		super();
@@ -117,9 +114,5 @@ public class Room {
 	public void setId_hotel(Hotel id_hotel) {
 		this.hotel = id_hotel;
 	}
-	
-
-
 
 }
-

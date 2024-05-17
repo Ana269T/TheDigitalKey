@@ -69,14 +69,11 @@
 			<version>1.2.1</version>
 		</dependency>
 
-<<<<<<< HEAD
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-=======
->>>>>>> 711caea448228a3e71940e62ac9b50d7e95cc981
 	</dependencies>
 	
 	<build>
