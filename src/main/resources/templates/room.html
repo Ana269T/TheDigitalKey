@@ -49,32 +49,29 @@
 <body>
 
 <div class="container">
-    <h2>Room Form</h2>
+    <h2>Registro habitacion</h2>
     <form action="/submit-room" method="post">
         <div class="form-group">
-            <label for="room_number">Room Number</label>
-            <input type="text" id="room_number" name="room_number" required>
+            <label for="room_number">Numero de habitacion</label>
+            <input type="text" id="room_number" name="room_number" th:object="${room_number}" required>
         </div>
         <div class="form-group">
             <label for="room_type">Room Type</label>
-            <input type="text" id="room_type" name="room_type" required>
+            <input type="text" id="room_type" name="room_type" th:object="${room_type}" required>
         </div>
         <div class="form-group">
             <label for="price_night">Price Night</label>
-            <input type="text" id="price_night" name="price_night" required>
+            <input type="text" id="price_night" name="price_night" th:object="${price_night}" required>
         </div>
         <div class="form-group">
-            <label for="availability">Availability</label>
-            <input type="number" id="availability" name="availability" required>
+            <label for="availability">Disponibilidad</label>
+            <input type="number" id="availability" name="availability" th:object="${availability}" required>
         </div>
         <div class="form-group">
-            <label for="details">Details</label>
-            <textarea id="details" name="details" rows="4" required></textarea>
+            <label for="details">Detalles</label>
+            <textarea id="details" name="details" rows="4" th:object="${details}" required></textarea>
         </div>
-        <div class="form-group">
-            <label for="hotel_id">Hotel ID</label>
-            <input type="number" id="hotel_id" name="hotel_id" required>
-        </div>
+        
         <div class="form-group">
             <button type="submit">Submit</button>
         </div>

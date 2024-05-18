@@ -25,7 +25,7 @@ public class Hotel {
 	private String department;
 
 	@Column(name = "Phone")
-	private int phone;
+	private String phone;
 
 	@Column(name = "Classification")
 	private String classification;
@@ -53,7 +53,7 @@ public class Hotel {
 		super();
 	}
 
-	public Hotel(Long id, String img, String name, String address, String department, int phone, String classification,
+	public Hotel(Long id, String img, String name, String address, String department, String phone, String classification,
 			String state, int swimming_pool, String wifi, Department department_, List<Room> room,
 			List<booking> reservas) {
 		super();
@@ -120,11 +120,11 @@ public class Hotel {
 		this.department = department;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

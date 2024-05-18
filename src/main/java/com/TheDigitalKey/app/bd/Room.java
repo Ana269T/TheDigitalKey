@@ -25,7 +25,7 @@ public class Room {
 	private int availability;
 
 	@Column(name = "Details")
-	private String Details;
+	private String details;
 
 	@OneToMany(mappedBy = "room")
 	private List<booking> booking;
@@ -46,7 +46,7 @@ public class Room {
 		this.room_type = room_type;
 		this.price_night = price_night;
 		this.availability = availability;
-		Details = details;
+		this.details = details;
 		this.booking = booking;
 		this.hotel = id_hotel;
 	}
@@ -92,11 +92,11 @@ public class Room {
 	}
 
 	public String getDetails() {
-		return Details;
+		return details;
 	}
 
 	public void setDetails(String details) {
-		Details = details;
+		details = details;
 	}
 
 	public List<booking> getBooking() {
