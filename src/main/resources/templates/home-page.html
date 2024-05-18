@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoteles</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-info h5 {
+            margin: 0;
+        }
+        .product-info p {
+            margin: 5px 0;
+        }
+        .view-rooms {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            text-align: center;
+        }
+        footer .footer-links a {
+            color: #007bff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">The Digital Key</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Hoteles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Reservas</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Iniciar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Nuestros Hoteles</h1>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar hoteles" aria-label="Buscar">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Hotel 1">
+                    <div class="product-info">
+                        <h5>Hotel 1</h5>
+                        <p>Descripción del Hotel 1</p>
+                        <p>Precio por noche: $100,000</p>
+                        <a class="view-rooms" href="https://example.com/hotel1">Ver Habitaciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Hotel 2">
+                    <div class="product-info">
+                        <h5>Hotel 2</h5>
+                        <p>Descripción del Hotel 2</p>
+                        <p>Precio por noche: $200,000</p>
+                        <a class="view-rooms" href="https://example.com/hotel2">Ver Habitaciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Hotel 3">
+                    <div class="product-info">
+                        <h5>Hotel 3</h5>
+                        <p>Descripción del Hotel 3</p>
+                        <p>Precio por noche: $300,000</p>
+                        <a class="view-rooms" href="https://example.com/hotel3">Ver Habitaciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Hotel 4">
+                    <div class="product-info">
+                        <h5>Hotel 4</h5>
+                        <p>Descripción del Hotel 4</p>
+                        <p>Precio por noche: $150,000</p>
+                        <a class="view-rooms" href="https://example.com/hotel4">Ver Habitaciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Hotel 5">
+                    <div class="product-info">
+                        <h5>Hotel 5</h5>
+                        <p>Descripción del Hotel 5</p>
+                        <p>Precio por noche: $250,000</p>
+                        <a class="view-rooms" href="https://example.com/hotel5">Ver Habitaciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Hotel 6">
+                    <div class="product-info">
+                        <h5>Hotel 6</h5>
+                        <p>Descripción del Hotel 6</p>
+                        <p>Precio por noche: $350,000</p>
+                        <a class="view-rooms" href="https://example.com/hotel6">Ver Habitaciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Hotel 7">
+                    <div class="product-info">
+                        <h5>Hotel 7</h5>
+                        <p>Descripción del Hotel 7</p>
+                        <p>Precio por noche: $180,000</p>
+                        <a class="view-rooms" href="https://example.com/hotel7">Ver Habitaciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Hotel 8">
+                    <div class="product-info">
+                        <h5>Hotel 8</h5>
+                        <p>Descripción del Hotel 8</p>
+                        <p>Precio por noche: $220,000</p>
+                        <a class="view-rooms" href="https://example.com/hotel8">Ver Habitaciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Hotel 9">
+                    <div class="product-info">
+                        <h5>Hotel 9</h5>
+                        <p>Descripción del Hotel 9</p>
+                        <p>Precio por noche: $275,000</p>
+                        <a class="view-rooms" href="https://example.com/hotel9">Ver Habitaciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Hotel 10">
+                    <div class="product-info">
+                        <h5>Hotel 10</h5>
+                        <p>Descripción del Hotel 10</p>
+                        <p>Precio por noche: $320,000</p>
+                        <a class="view-rooms" href="https://example.com/hotel10">Ver Habitaciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-5">
+        <div class="container">
+            <p>&copy; 2024 Hoteles. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Aviso Legal</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
