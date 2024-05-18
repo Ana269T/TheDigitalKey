@@ -1,89 +1,85 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Registro de Habitaciones</title>
-    <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Room Form</title>
     <style>
-        .error {
-            color: red;
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Formulario de Registro de Habitaciones</h3>
-                <form th:action="@{/hotel/{id}/room(id=${hotel.id})}" th:object="${room}" method="post">
-                    <div class="form-group">
-                        <label for="room_number">Número de Habitación</label>
-                        <input type="text" class="form-control" id="room_number" name="Room_number" th:object="${Room_number}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="room_type">Tipo de Habitación</label>
-                        <input type="text" class="form-control" id="room_type" name="Room_type" th:object="${Room_type}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="price_night">Precio por abitacion</label>
-                        <input type="text" class="form-control" id="price_night" name="Price_night" th:object="${Price_night}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="Details">Detalles</label>
-                        <textarea class="form-control" id="Details" name="Details" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
-                </form>
-                <!-- Elementos de error -->
-                <div class="error" id="error-room_number"></div>
-                <div class="error" id="error-room_type"></div>
-                <div class="error" id="error-price_night"></div>
-                <div class="error" id="error-Details"></div>
-            </div>
+
+<div class="container">
+    <h2>Room Form</h2>
+    <form action="/submit-room" method="post">
+        <div class="form-group">
+            <label for="room_number">Room Number</label>
+            <input type="text" id="room_number" name="room_number" required>
         </div>
-    </div>
-    <script>
-        function validarFormulario() {
-            var room_number = document.getElementById('room_number').value;
-            var room_type = document.getElementById('room_type').value;
-            var price_night = document.getElementById('price_night').value;
-            var details = document.getElementById('Details').value;
+        <div class="form-group">
+            <label for="room_type">Room Type</label>
+            <input type="text" id="room_type" name="room_type" required>
+        </div>
+        <div class="form-group">
+            <label for="price_night">Price Night</label>
+            <input type="text" id="price_night" name="price_night" required>
+        </div>
+        <div class="form-group">
+            <label for="availability">Availability</label>
+            <input type="number" id="availability" name="availability" required>
+        </div>
+        <div class="form-group">
+            <label for="details">Details</label>
+            <textarea id="details" name="details" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="hotel_id">Hotel ID</label>
+            <input type="number" id="hotel_id" name="hotel_id" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
 
-            var error_room_number = document.getElementById('error-room_number');
-            var error_room_type = document.getElementById('error-room_type');
-            var error_price_night = document.getElementById('error-price_night');
-            var error_details = document.getElementById('error-Details');
-
-            if (room_number.trim() === '') {
-                error_room_number.textContent = 'Por favor, ingrese el número de habitación.';
-                return false;
-            } else {
-                error_room_number.textContent = '';
-            }
-
-            if (room_type.trim() === '') {
-                error_room_type.textContent = 'Por favor, ingrese el tipo de habitación.';
-                return false;
-            } else {
-                error_room_type.textContent = '';
-            }
-
-            if (price_night.trim() === '') {
-                error_price_night.textContent = 'Por favor, ingrese el precio por noche.';
-                return false;
-            } else if (isNaN(price_night)) {
-                error_price_night.textContent = 'Por favor, ingrese un valor numérico.';
-                return false;
-            } else {
-                error_price_night.textContent = '';
-            }
-
-            
-
-            return true; // Enviar el formulario si todas las validaciones pasan
-        }
-    </script>
 </body>
 </html>
