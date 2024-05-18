@@ -57,7 +57,7 @@ public class HotelController {
 	public String guardarRegistroHotel(Hotel hotel) {
 		System.out.print("Ingreso al metodo de guardado");
 		hotelRepository.save(hotel);
-		return "redirect:/hotel/hotels";
+		return "room";
 	}
 
 	@GetMapping("/hotels")
@@ -71,7 +71,7 @@ public class HotelController {
 		System.out.println("Ingreso al metodo de guardado de habitacion");
 		System.out.println("Id del hotel: " + id);
 		model.addAttribute("hotel", hotelRepository.findById(id).get());
-		return "habitacion";
+		return "hotel_list";
 	}
 
 	@PostMapping("/{id}/room")
@@ -86,26 +86,26 @@ public class HotelController {
 		return "redirect:/hotel/hotels";
 	}
 
-	// @GetMapping("")
-	// public String addProductoGet(Model model) {
-	// return "uploadimage";
-	// }
+	 @GetMapping("")
+	 public String addProductoGet(Model model) {
+	 return "uploadimage";
+	 }
 
-	// @PostMapping("/upload-image")
-	// public String addProducto(Model model, @RequestParam("file") MultipartFile
-	// file) {
+	 @PostMapping("/upload-image")
+	 public String addProducto(Model model, @RequestParam("file") MultipartFile
+	 file) {
 
-	// try {
-	// Map uploadResult = cloudc.upload(file.getBytes(),
-	// ObjectUtils.asMap("resourcetype", "auto"));
-	// System.out.println(uploadResult.get("url").toString());
+	 try {
+	 Map uploadResult = cloudc.upload(file.getBytes(),
+	 ObjectUtils.asMap("resourcetype", "auto"));
+	 System.out.println(uploadResult.get("url").toString());
 
-	// } catch (Exception e) {
-	// System.out.println(e.getMessage());
-	// }
+	 } catch (Exception e) {
+	 System.out.println(e.getMessage());
+	 }
 
-	// return "redirect:/";
-	// }
+	 return "redirect:/";
+	 }
 
 	@GetMapping("/open-pdf")
 	public String openPDF(Model model) {
