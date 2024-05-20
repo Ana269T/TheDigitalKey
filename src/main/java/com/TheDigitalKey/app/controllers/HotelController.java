@@ -49,30 +49,38 @@ public class HotelController {
 	
 	@GetMapping("/registrohotel")
 	public String formularioHotel(Hotel hotel, Model model) {
-		System.out.print("entra");
+		//System.out.print("entra");
 		return "hotel";
 	}
 
 	@PostMapping("/registrohotel")
 	public String guardarRegistroHotel(Hotel hotel, @RequestParam("file") MultipartFile file) {
-		System.out.print("Ingreso al metodo de guardado");
-		try {
-			Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
-			System.out.println(uploadResult.get("url").toString());
-			hotel.setImg(uploadResult.get("url").toString());
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		
-		hotelRepository.save(hotel);
-		return "room";
+	    try {
+	        Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+	        hotel.setImg(uploadResult.get("url").toString());
+	    } catch (Exception e) {
+	        System.out.println(e.getMessage());
+	    }
+	    
+	    hotelRepository.save(hotel);
+	    return "redirect:/hotel/hotels"; // Redirecciona a la página de lista de hoteles
 	}
+
+	
+	
+	@GetMapping("/details/{id}")
+	public String detallesHotel(@PathVariable Long id, Model model) {
+	    Hotel hotel = hotelRepository.findById(id).orElse(null);
+	    model.addAttribute("hotel", hotel);
+	    return "hotel_details";
+	}
+
+
 
 	@GetMapping("/hotels")
 	public String guardarRegistroHabitacion(Model model) {
 		model.addAttribute("hotels", hotelRepository.findAll());
-		return "hotel-list";
+		return "hotel_list";
 	}
 
 	@GetMapping("/{id}/room")
@@ -120,5 +128,7 @@ public class HotelController {
 	public String openPDF(Model model) {
 		return "pdf";
 	}
-
+	
+	// hacer el hotel.getId se hace cuando se seleciona el hotel, para buscar el id del hotel y hacer el registro de la habitacion.
+	// esto se hace con el redirect:/hotel.getId
 }

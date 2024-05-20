@@ -36,30 +36,28 @@
                 <th>Clasificacion</th>
                 <th>Piscina</th>
                 <th>Wifi</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <a class="btn btn-success" th:href="@{/hotel/registrohotel}">
             <i class="fas fa-plus"></i> Add Hotel
         </a>
         <tbody>
-            <tr th:each="hotel : ${hotels}">
-                <td th:text="${Hotel.id}"></td>
-                <td th:text="${Hotel.name}"></td>
-                <td th:text="${Hotel.address}"></td>
-                <td th:text="${Hotel.department}"></td>
-                <td th:text="${Hotel.phone}"></td>
-                <td th:text="${Hotel.State}"></td>
-                <td th:text="${Hotel.Swimming_pool}"></td>
-                <td th:text="${Hotel.wifi}"></td>
-                
-                <td>
-                    <a class="btn btn-primary" th:href="@{/hotel/{id}/room(id=${hotel.id})}">Agregar Habitaciones</a>
-                    <a class="btn btn-secondary" th:href="@{'/hotel/rooms/' + ${hotel.id}}">Ver Habitaciones</a>
-                    <button class="btn btn-info" th:href="@{'/hotel/edit/' + ${hotel.id}}">Editar</button>
-                    <button class="btn btn-danger" th:href="@{'/hotel/delete/' + ${hotel.id}}">Eliminar</button>
-                </td>
-            </tr>
-        </tbody>
+    <tr th:each="hotel : ${hotels}">
+        <td th:text="${hotel.id}"></td>
+        <td th:text="${hotel.name}"></td>
+        <td th:text="${hotel.address}"></td>
+        <td th:text="${hotel.department}"></td>
+        <td th:text="${hotel.phone}"></td>
+        <td th:text="${hotel.classification}"></td> 
+        <td th:text="${hotel.swimming_pool}"></td>
+        <td th:text="${hotel.wifi}"></td>
+        <td>
+            <a class="btn btn-primary" th:href="@{'/hotel/details/' + ${hotel.id}}">Ver Detalles</a>
+            <!-- Otros botones de acción -->
+        </td>
+    </tr>
+</tbody>
     </table>
 
     <!-- Agrega el enlace al archivo JavaScript de Bootstrap -->

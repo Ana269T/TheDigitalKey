@@ -11,6 +11,9 @@ public class Room {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name = "img")
+	private String img;
 
 	@Column(name = "Room_number")
 	private String room_number;
@@ -38,18 +41,35 @@ public class Room {
 		super();
 	}
 
-	public Room(Long id, String room_number, String room_type, String price_night, int availability, String details,
-			List<com.TheDigitalKey.app.bd.booking> booking, Hotel id_hotel) {
+	
+
+	public Room(Long id, String img, String room_number, String room_type, String price_night, int availability,
+			String details, List<com.TheDigitalKey.app.bd.booking> booking, Hotel hotel) {
 		super();
 		this.id = id;
+		this.img = img;
 		this.room_number = room_number;
 		this.room_type = room_type;
 		this.price_night = price_night;
 		this.availability = availability;
 		this.details = details;
 		this.booking = booking;
-		this.hotel = id_hotel;
+		this.hotel = hotel;
 	}
+
+
+
+	public String getImg() {
+		return img;
+	}
+
+
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+
 
 	public Long getId() {
 		return id;

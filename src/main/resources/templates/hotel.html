@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de hoteles</title>
-    <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -12,19 +11,20 @@
         <div class="card">
             <div class="card-body">
                 <h3 class="card-title">Registro de hoteles</h3>
-                 <form th:action="@{/hotel/registrohotel}" method="post" th:object="${hotel}"enctype="multipart/form-data" name="upload-image">
+                <form th:action="@{/hotel/registrohotel}" method="post" th:object="${hotel}" enctype="multipart/form-data">
+                    <!-- Campos del formulario -->
                     <div class="form-group">
                         <label for="name">Nombre</label>
                         <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required>
-                        <small id="error-nombre" class="text-danger"></small>
                     </div>
                     <div class="form-group">
                         <label for="address">Dirección</label>
                         <input type="text" class="form-control" id="address" name="address" th:field="*{address}" required>
                     </div>
-                   <div class="form-group">
+                    <div class="form-group">
                         <label for="department">Departamento</label>
                         <select class="form-control" id="department" name="department" th:field="*{department}" required>
+                            <option value="" disabled selected>Selecciona un departamento</option>
                             <option value="" disabled selected>Selecciona un departamento</option>
                             <option value="Amazonas">Amazonas</option>
                             <option value="Antioquia">Antioquia</option>
@@ -37,81 +37,60 @@
                             <option value="Risaralda">Risaralda</option>
                             <option value="Santander">Santander</option>
                             <option value="Tolima">Tolima</option>
-                           
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="phone">Teléfono</label>
                         <input type="tel" class="form-control" id="phone" name="phone" th:field="*{phone}" required>
-                        <small id="error-telefono" class="text-danger"></small>
                     </div>
-                   <div class=“form-group”> 
-					   <label for=“classification”>Clasificación</label>
-					    <select class=“form-control” id=“classification” name=“classification” th:field="*{classification}" required>
-					    <option value=“1”>1</option>
-					     <option value=“2”>2</option>
-					     <option value=“3”>3</option>
-					     <option value=“4”>4</option>
-					     <option value=“5”>5</option> 
-					     </select> 
-					 </div>
+                    <div class="form-group">
+                        <label for="classification">Clasificación</label>
+                        <select class="form-control" id="classification" name="classification" th:field="*{classification}" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="state">Estado</label>
-                        <select class="form-control" id="state" name="state" th:field="*{state}"  required>
+                        <select class="form-control" id="state" name="state" th:field="*{state}" required>
                             <option value="" disabled selected>Selecciona un estado</option>
                             <option value="activo">Activo</option>
                             <option value="inactivo">Inactivo</option>
                         </select>
-                        
                     </div>
-					
-						<div class="form-group">
-                    <label for="file-upload" class="subir btn btn-primary">
-                        <i class="fas fa-cloud-upload-alt">Cargar Imagen</i> 
-                        <input type="file" id="file-upload" accept="image/*" class="form-control-file" style='display: none;' name="file">
-                    </label>
-						
+                    <div class="form-group">
+                        <label for="file-upload" class="subir btn btn-primary">
+                            <i class="fas fa-cloud-upload-alt">Cargar Imagen</i>
+                            <input type="file" id="file-upload" accept="image/*" class="form-control-file" style='display: none;' name="file">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                         <label for="swimming_pool">Piscina</label>
+                         <select class="form-control" id="swimming_pool" name="swimming_pool" th:field="*{swimming_pool}" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="wifi">Wifi</label>
+                        <select class="form-control" id="wifi" name="wifi" th:field="*{wifi}" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select>
+                     </div>
+
                     <button type="submit" class="btn btn-primary">Registrar Hotel</button>
                 </form>
             </div>
         </div>
     </div>
-
-    <!-- Agrega los enlaces a los archivos JS de Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        function validarFormulario() {
-            var nombre = document.getElementById('name').value;
-            var telefono = document.getElementById('phone').value;
-
-            var regexSoloLetras = /^[a-zA-Z\s]*$/; // Solo letras y espacios
-            var regexCorreo = /\S+@\S+\.\S+/; // Correo electrónico válido
-            var regexSoloNumeros = /^\d+$/; // Solo números
-
-            var errorNombre = document.getElementById('error-nombre');
-            var errorTelefono = document.getElementById('error-telefono');
-
-            // Validar Nombre
-            if (!nombre.match(regexSoloLetras)) {
-                errorNombre.textContent = 'Por favor, ingrese solo letras y espacios.';
-                return false;
-            } else {
-                errorNombre.textContent = '';
-            }
-
-            // Validar Teléfono
-            if (!telefono.match(regexSoloNumeros)) {
-                errorTelefono.textContent = 'Por favor, ingrese solo números.';
-                return false;
-            } else {
-                errorTelefono.textContent = '';
-            }
-
-            return true; 
-        }
-    </script>
 </body>
 </html>
-

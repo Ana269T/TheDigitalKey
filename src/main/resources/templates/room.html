@@ -50,7 +50,7 @@
 
 <div class="container">
     <h2>Registro habitacion</h2>
-    <form action="/submit-room" method="post">
+    <form th:action="@{/{id}/room}" method="post">
         <div class="form-group">
             <label for="room_number">Numero de habitacion</label>
             <input type="text" id="room_number" name="room_number" th:object="${room_number}" required>

@@ -34,7 +34,7 @@ public class Hotel {
 	private String state;
 
 	@Column(name = "Swimming_pool")
-	private int swimming_pool;
+	private String swimming_pool;
 
 	@Column(name = "wifi")
 	private String wifi;
@@ -54,7 +54,7 @@ public class Hotel {
 	}
 
 	public Hotel(Long id, String img, String name, String address, String department, String phone, String classification,
-			String state, int swimming_pool, String wifi, Department department_, List<Room> room,
+			String state, String swimming_pool, String wifi, Department department_, List<Room> room,
 			List<booking> reservas) {
 		super();
 		this.id = id;
@@ -144,11 +144,11 @@ public class Hotel {
 		this.state = state;
 	}
 
-	public int getSwimming_pool() {
+	public String getSwimming_pool() {
 		return swimming_pool;
 	}
 
-	public void setSwimming_pool(int swimming_pool) {
+	public void setSwimming_pool(String swimming_pool) {
 		this.swimming_pool = swimming_pool;
 	}
 

@@ -1,23 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles del Hotel</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <!-- Enlaces a los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card {
+            border: none;
+        }
+
+        .card-title {
+            color: #343a40; /* gris oscuro */
+            text-align: center; /* Centra el texto horizontalmente */
+        }
+
+        .card-text {
+            color: #6c757d; /* gris medio */
+        }
+
+        .btn-success {
+            background-color: #1e7e34; /* verde oscuro */
+            border-color: #1e7e34; /* verde oscuro */
+        }
+
+        .btn-success:hover {
+            background-color: #146c2c; /* verde más oscuro al pasar el ratón */
+            border-color: #146c2c; /* verde más oscuro al pasar el ratón */
+        }
+    </style>
 </head>
-<body>
-    <h1 th:text="${hotel.name}">Nombre del Hotel</h1>
-    <p th:text="${hotel.address}">Dirección</p>
-    <p th:text="'Clasificación: ' + ${hotel.classification}"></p>
-    <p>
-        <span th:text="'Piscina: ' + (${hotel.swimming_pool == 1 ? 'Sí' : 'No'})"></span>
-        <span th:text="' | WiFi: ' + (${hotel.wifi})"></span>
-    </p>
-    <div th:each="room : ${hotel.room}">
-        <h3 th:text="'Habitación ' + ${room.roomNumber}"></h3>
-        <p th:text="'Tipo: ' + ${room.roomType}"></p>
-        <p th:text="'Precio por noche: ' + ${room.pricePerNight}"></p>
-        <p th:text="'Disponibilidad: ' + (${room.isAvailable} ? 'Disponible' : 'No Disponible')"></p>
-        <a th:if="${room.isAvailable}" th:href="@{/reservations/book/{id}(id=${room.id})}">Reservar</a>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-body">
+                <h1 class="card-title text-dark" th:text="${hotel.name}">Nombre del Hotel</h1>
+                <p class="card-text text-muted" th:text="${hotel.address}">Dirección</p>
+                <p class="card-text text-muted" th:text="'Clasificación: ' + ${hotel.classification}">Clasificación</p>
+                <p class="card-text text-muted" th:text="'Departamento: ' + ${hotel.department}">Departamento</p>
+                <p class="card-text text-muted" th:text="'Teléfono: ' + ${hotel.phone}">Teléfono</p>
+                <p class="card-text text-muted" th:text="'Estado: ' + ${hotel.state}">Estado</p>
+                <p class="card-text text-muted" th:text="'Piscina: ' + ${hotel.swimming_pool}">Piscina</p>
+                <p class="card-text text-muted" th:text="'Wifi: ' + ${hotel.wifi}">Wifi</p>
+                <!-- Mostrar la imagen del hotel -->
+                <img  class="card-img-top" alt="Imagen del Hotel">`
+                
+                <!-- Botones de eliminar y editar -->
+                <div class="mt-3">
+                    <a  class="btn btn-success mr-2">Editar</a>
+                    <a class="btn btn-danger">Eliminar</a>
+                </div>
+                
+                <!-- Agrega más detalles según sea necesario -->
+            </div>
+        </div>
     </div>
+
+    <!-- Enlaces a los archivos JS de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
