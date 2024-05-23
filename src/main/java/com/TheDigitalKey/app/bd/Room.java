@@ -25,7 +25,7 @@ public class Room {
 	private String price_night;
 
 	@Column(name = "Availability")
-	private int availability;
+	private String availability;
 
 	@Column(name = "Details")
 	private String details;
@@ -43,7 +43,7 @@ public class Room {
 
 	
 
-	public Room(Long id, String img, String room_number, String room_type, String price_night, int availability,
+	public Room(Long id, String img, String room_number, String room_type, String price_night, String availability,
 			String details, List<com.TheDigitalKey.app.bd.booking> booking, Hotel hotel) {
 		super();
 		this.id = id;
@@ -103,11 +103,11 @@ public class Room {
 		this.price_night = price_night;
 	}
 
-	public int getAvailability() {
+	public String getAvailability() {
 		return availability;
 	}
 
-	public void setAvailability(int availability) {
+	public void setAvailability(String availability) {
 		this.availability = availability;
 	}
 

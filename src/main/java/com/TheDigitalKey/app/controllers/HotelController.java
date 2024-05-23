@@ -88,7 +88,7 @@ public class HotelController {
 		System.out.println("Ingreso al metodo de guardado de habitacion");
 		System.out.println("Id del hotel: " + id);
 		model.addAttribute("hotel", hotelRepository.findById(id).get());
-		return "hotel_list";
+		return "room";
 	}
 
 	@PostMapping("/{id}/room")
@@ -100,7 +100,7 @@ public class HotelController {
 		habitacion.setId_hotel(hotel);
 
 		habitacionRepository.save(habitacion);
-		return "redirect:/hotel/hotels";
+		return "redirect:/hotel/details/" + id;
 	}
 
 	 @GetMapping("")
