@@ -50,26 +50,26 @@
 
 <div class="container">
     <h2>Registro de Habitación</h2>
-    <form th:action="@{/hotel/{id}/room(id=${hotel.id})}" method="post">
+    <form th:action="@{/hotel/{id}/room(id=${hotel.id})}"th:object="${room}"  method="post">
         <div class="form-group">
             <label for="room_number">Número de Habitación</label>
-            <input type="text" id="room_number" name="room_number" required>
+            <input type="text" id="room_number" name="room_number" th:field="*{room_number}" required>
         </div>
         <div class="form-group">
             <label for="room_type">Tipo de Habitación</label>
-            <input type="text" id="room_type" name="room_type" required>
+            <input type="text" id="room_type" name="room_type" th:field="*{room_type}" required>
         </div>
         <div class="form-group">
             <label for="price_night">Precio por Noche</label>
-            <input type="text" id="price_night" name="price_night" required>
+            <input type="text" id="price_night" name="price_night" th:field="*{price_night}" required>
         </div>
         <div class="form-group">
             <label for="availability">Disponibilidad</label>
-            <input type="number" id="availability" name="availability" required>
+            <input type="number" id="availability" name="availability" th:field="*{availability}" required>
         </div>
         <div class="form-group">
             <label for="details">Detalles</label>
-            <textarea id="details" name="details" rows="4" required></textarea>
+            <textarea id="details" name="details" rows="4" th:field="*{details}" required></textarea>
         </div>
         
         <div class="form-group">
