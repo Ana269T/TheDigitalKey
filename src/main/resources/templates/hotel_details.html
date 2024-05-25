@@ -6,60 +6,72 @@
     <title>Detalles del Hotel</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        body {
+            background-color: #f5f5f5; /* Gris claro para el fondo */
+            color: #333; /* Color de texto oscuro */
+        }
         .card {
-            border: none;
+            border: none; /* Sin borde para la tarjeta */
+            background-color: #fff; /* Fondo blanco */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
         }
         .card-title {
-            color: #343a40;
-            text-align: center;
+            color: #34495e; /* Azul grisáceo para el título */
+            text-align: center; /* Centrado */
+            font-size: 2.5em; /* Tamaño de fuente grande */
+            font-weight: 700; /* Negrita */
+        }
+        .card-img-top {
+            width: 100%; /* Ancho completo para la imagen */
+            height: auto; /* Altura automática */
+            border-radius: 10px; /* Bordes redondeados */
+            margin-top: 20px; /* Espacio superior */
         }
         .card-text {
-            color: #6c757d;
+            color: #666; /* Color de texto gris */
+            margin-bottom: 10px; /* Espacio inferior */
         }
         .btn-success {
-            background-color: #1e7e34;
-            border-color: #1e7e34;
+            background-color: #1abc9c; /* Verde turquesa para el botón de éxito */
+            border-color: #1abc9c; /* Borde del mismo color */
+            font-weight: 700; /* Negrita */
+            transition: background-color 0.3s; /* Transición suave */
         }
         .btn-success:hover {
-            background-color: #146c2c;
-            border-color: #146c2c;
+            background-color: #16a085; /* Color más oscuro al pasar el ratón */
+            border-color: #16a085;
         }
         .room {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px 0;
+            border: 1px solid #ccc; /* Borde delgada */
+            padding: 10px; /* Espaciado interno */
+            margin: 10px 0; /* Espaciado exterior superior e inferior */
+            background-color: #f9f9f9; /* Fondo gris claro */
+            border-radius: 5px; /* Bordes redondeados */
         }
     </style>
 </head>
-<body class="bg-light">
+<body>
     <div class="container mt-5">
         <div class="card shadow">
             <div class="card-body">
-                <h1 class="card-title text-dark" th:text="${hotel.name}">Nombre del Hotel</h1>
+                <h1 class="card-title" th:text="${hotel.name}">Nombre del Hotel</h1>
                 <img class="card-img-top" th:src="${hotel.img}" alt="Imagen del Hotel">
-                <p class="card-text text-muted" th:text="${hotel.address}">Dirección</p>
-                <p class="card-text text-muted" th:text="'Clasificación: ' + ${hotel.classification}">Clasificación</p>
-                <p class="card-text text-muted" th:text="'Departamento: ' + ${hotel.department}">Departamento</p>
-                <p class="card-text text-muted" th:text="'Teléfono: ' + ${hotel.phone}">Teléfono</p>
-                <p class="card-text text-muted" th:text="'Estado: ' + ${hotel.state}">Estado</p>
-                <p class="card-text text-muted" th:text="'Piscina: ' + ${hotel.swimming_pool}">Piscina</p>
-                <p class="card-text text-muted" th:text="'Wifi: ' + ${hotel.wifi}">Wifi</p>
+                <p class="card-text" th:text="${hotel.address}">Dirección</p>
+                <p class="card-text" th:text="'Clasificación: ' + ${hotel.classification}">Clasificación</p>
+                <p class="card-text" th:text="'Departamento: ' + ${hotel.department}">Departamento</p>
+                <p class="card-text" th:text="'Teléfono: ' + ${hotel.phone}">Teléfono</p>
+                <p class="card-text" th:text="'Estado: ' + ${hotel.state}">Estado</p>
+                <p class="card-text" th:text="'Piscina: ' + ${hotel.swimming_pool}">Piscina</p>
+                <p class="card-text" th:text="'Wifi: ' + ${hotel.wifi}">Wifi</p>
                 
-                 <tbody>
-				    <tr th:each="room : ${room}">
-				        <td th:text="${room.room_number}"></td>
-				        <td th:text="${room.room_type}"></td>
-				        <td th:text="${room.price_night}"></td>
-				        <td th:text="${room.availability}"></td>
-				        <td th:text="${room.details}"></td>
-				       
-				        <td>
-				           
-				            <!-- Otros botones de acción -->
-				        </td>
-				    </tr>
-				</tbody>
-               
+                <h2 class="mt-4">Habitaciones Disponibles</h2>
+                <div class="room" th:each="hotel : ${room}">
+                    <p th:text="${room.room_number}"></p>
+                    <p th:text="${room.room_type}"></p>
+                    <p th:text="'Precio por Noche: ' + ${room.price_night}"></p>
+                    <p th:text="'Disponibilidad: ' + ${room.availability}"></p>
+                    <p th:text="${room.details}"></p>
+                </div>
                 
                 <div class="mt-3">
                     <button class="btn btn-success mr-2" th:onclick="'window.location.href=\'/hotel/' + ${hotel.id} + '/room\''">Registrar Nueva Habitación</button>
@@ -67,6 +79,5 @@
             </div>
         </div>
     </div>
-  
 </body>
 </html>

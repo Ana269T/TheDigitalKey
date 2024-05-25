@@ -48,7 +48,7 @@ public class UserController {
 			Optional<User> user = userRepository.findByUsername(username);
 			User userSession = user.get();
 			if (username.equals(userSession.getUsername()) && password.equals(userSession.getPassword())) {
-				return "home-page";
+				return "redirect:/hotel/hotels-homepage";
 
 			} else {
 				System.out.println("no esta registrado");
@@ -58,7 +58,7 @@ public class UserController {
 			}
 		} catch (Exception e) {
 			System.out.println("Me entra al catch");
-			return "home-page";
+			return "redirect:/hotel/hotels-homepage";
 		}
 
 	}
