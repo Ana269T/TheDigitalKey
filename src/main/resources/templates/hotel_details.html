@@ -47,6 +47,28 @@
             margin: 10px 0; /* Espaciado exterior superior e inferior */
             background-color: #f9f9f9; /* Fondo gris claro */
             border-radius: 5px; /* Bordes redondeados */
+            flex-grow: 1;
+        }
+        .room-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .reserve-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .reserve-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -56,6 +78,9 @@
             <div class="card-body">
                 <h1 class="card-title" th:text="${hotel.name}">Nombre del Hotel</h1>
                 <img class="card-img-top" th:src="${hotel.img}" alt="Imagen del Hotel">
+                <br>
+                <br>
+                
                 <p class="card-text" th:text="${hotel.address}">Dirección</p>
                 <p class="card-text" th:text="'Clasificación: ' + ${hotel.classification}">Clasificación</p>
                 <p class="card-text" th:text="'Departamento: ' + ${hotel.department}">Departamento</p>
@@ -65,12 +90,13 @@
                 <p class="card-text" th:text="'Wifi: ' + ${hotel.wifi}">Wifi</p>
                 
                 <h2 class="mt-4">Habitaciones Disponibles</h2>
-                <div class="room" th:each="hotel : ${room}">
+                <div class="room" th:each="room : ${rooms}">
                     <p th:text="${room.room_number}"></p>
                     <p th:text="${room.room_type}"></p>
                     <p th:text="'Precio por Noche: ' + ${room.price_night}"></p>
                     <p th:text="'Disponibilidad: ' + ${room.availability}"></p>
                     <p th:text="${room.details}"></p>
+                    <button class="reserve-button">Reservar</button>
                 </div>
                 
                 <div class="mt-3">

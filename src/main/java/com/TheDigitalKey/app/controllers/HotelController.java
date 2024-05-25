@@ -60,6 +60,7 @@ public class HotelController {
 	public String detallesHotel(@PathVariable Long id, Model model) {
 		Hotel hotel = hotelRepository.findById(id).orElse(null);
 		model.addAttribute("hotel", hotel);
+		model.addAttribute("rooms", habitacionRepository.findByHotelId(hotel.getId()));
 		return "hotel_details";
 	}
 
@@ -126,14 +127,13 @@ public class HotelController {
 		model.addAttribute("hotel", hotel);
 		return "hotel_details_usuario";
 	}
-	
+
 	@GetMapping("/hotels-homepage")
 	public String hotelListHomePage(Model model) {
 		System.out.println(hotelRepository.findAll());
-		model.addAttribute("hotels",hotelRepository.findAll() );
+		model.addAttribute("hotels", hotelRepository.findAll());
 		return "home-page";
 	}
-	
 
 	// hacer el hotel.getId se hace cuando se seleciona el hotel, para buscar el id
 	// del hotel y hacer el registro de la habitacion.
