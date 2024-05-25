@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas de Hotel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            background-color: #5cb85c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+ <div class="container mt-5">
+    <div class="card">
+		<div class="card-body">
+        	<h1 class="card-title text-center mb-4">Reservas de Hotel</h1class="card-title text-center mb-4">
+        	<form th:action="@{/reserva}" method="post" th:object="${reserva}" enctype="multipart/form-data">
+        		<div class="card-body">
+					<div class="col-md-6">
+       					 <form id="reservationForm">
+            				<label for="checkin"class="form-label">Fecha de Entrada</label>
+            				<input type="date" th:field="*{checkin}"class="form-control" id="checkin" name="checkin" required>
+            		</div>
+            		<div class="col-md-6">
+            				<label for="checkout"class="form-label">Fecha de Salida</label>
+            				<input type="date" th:field="*{checkout}"class="form-control"id="checkout" name="checkout" required>
+            		</div>
+            		<div class="col-md-6">
+          					<label for="indentification"class="form-label">Cedula</label>
+            				<input type="number" th:field="*{indentification}"class="form-control"id="guests" name="guests" required>
+          		  	</div>
+          		  	<div class="col-md-6">
+          					<label for="email"class="form-label">Correo Electronico</label>
+            				<input type="email="*{indentification}"class="form-control"id="guests" name="guests" required>
+          		  	</div>
+          		  	
+          		  	
+            <button type="submit">Reservar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('reservationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('¡Reserva realizada con éxito!');
+        });
+    </script>
+</body>
+</html>
