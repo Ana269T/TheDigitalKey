@@ -56,19 +56,19 @@ public class HotelController {
 	}
 
 	// solo ADM
+	@GetMapping("/hotels")
+	public String guardarRegistroHabitacion(Model model) {
+		model.addAttribute("hotels", hotelRepository.findAll());
+		return "hotel_list";
+	}
+
+	// solo ADM
 	@GetMapping("/details/{id}")
 	public String detallesHotel(@PathVariable Long id, Model model) {
 		Hotel hotel = hotelRepository.findById(id).orElse(null);
 		model.addAttribute("hotel", hotel);
 		model.addAttribute("rooms", habitacionRepository.findByHotelId(hotel.getId()));
 		return "hotel_details";
-	}
-
-	// solo ADM
-	@GetMapping("/hotels")
-	public String guardarRegistroHabitacion(Model model) {
-		model.addAttribute("hotels", hotelRepository.findAll());
-		return "hotel_list";
 	}
 
 	// solo ADM
@@ -125,7 +125,7 @@ public class HotelController {
 	public String detallesHotelUsuario(@PathVariable Long id, Model model) {
 		Hotel hotel = hotelRepository.findById(id).orElse(null);
 		model.addAttribute("hotel", hotel);
-		return "hotel_details_usuario";
+		return "details_usuario";
 	}
 
 	@GetMapping("/hotels-homepage")
