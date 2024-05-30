@@ -31,7 +31,7 @@ public class Room {
 	private String details;
 
 	@OneToMany(mappedBy = "room")
-	private List<booking> booking;
+	private List<Booking> booking;
 
 	@ManyToOne
 	@JoinColumn(name = "hotel_id", referencedColumnName = "id")
@@ -44,7 +44,7 @@ public class Room {
 	
 
 	public Room(Long id, String img, String room_number, String room_type, String price_night, String availability,
-			String details, List<com.TheDigitalKey.app.bd.booking> booking, Hotel hotel) {
+			String details, List<com.TheDigitalKey.app.bd.Booking> booking, Hotel hotel) {
 		super();
 		this.id = id;
 		this.img = img;
@@ -119,11 +119,11 @@ public class Room {
 		details = details;
 	}
 
-	public List<booking> getBooking() {
+	public List<Booking> getBooking() {
 		return booking;
 	}
 
-	public void setBooking(List<booking> booking) {
+	public void setBooking(List<Booking> booking) {
 		this.booking = booking;
 	}
 

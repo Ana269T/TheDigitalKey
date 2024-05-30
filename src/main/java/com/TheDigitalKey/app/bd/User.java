@@ -34,14 +34,14 @@ public class User {
 	private String role;
 
 	@OneToMany(mappedBy = "usuario")
-	private List<booking> booking;
+	private List<Booking> booking;
 
 	public User() {
 		super();
 	}
 
 	public User(Long id, String names, String last_Names, String card, String username, String password, String phone,
-			String role, List<com.TheDigitalKey.app.bd.booking> booking) {
+			String role, List<com.TheDigitalKey.app.bd.Booking> booking) {
 		super();
 		this.id = id;
 		this.names = names;
@@ -118,11 +118,11 @@ public class User {
 		this.role = role;
 	}
 
-	public List<booking> getBooking() {
+	public List<Booking> getBooking() {
 		return booking;
 	}
 
-	public void setBooking(List<booking> booking) {
+	public void setBooking(List<Booking> booking) {
 		this.booking = booking;
 	}
 

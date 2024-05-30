@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Booking")
 
-public class booking {
+public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -40,11 +40,11 @@ public class booking {
 	@JoinColumn(name = "id_hotel", referencedColumnName = "id")
 	private Hotel hotel;
 
-	public booking() {
+	public Booking() {
 		super();
 	}
 
-	public booking(Long id, String date_entry, String date_departure, String reservation_status, int total_price,
+	public Booking(Long id, String date_entry, String date_departure, String reservation_status, int total_price,
 			String payment_form, String cancellation_policy, User user, Room room, Hotel id_hotel) {
 		super();
 		this.id = id;

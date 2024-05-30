@@ -56,25 +56,38 @@
 </head>
 <body>
     <header th:fragment="alv">
-       <h1>Bienvenido a Mi Página Web</h1>
-    </header>
-    <nav th:fragment="alv2">
-        <ul>
-            <li><a th:href="@{'#sobre-mi'}">Sobre Mí</a></li>
-            <li><a th:href="@{'#contacto'}">Contacto</a></li>
-        </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">The Digital Key</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reservas</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/login-page">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
-    
-    <section id="sobre-mi">
-        <h2>Sobre Mí</h2>
-        <p>Aquí puedes encontrar información sobre mí.</p>
-    </section>
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <p>Si deseas contactarme, puedes hacerlo a través de esta sección.</p>
-    </section>
-    <footer>
-        <p>© 2024</p>
+    </header>
+   
+    <footer class="mt-5">
+        <div class="container text-center">
+            <p>&copy; 2024 Hoteles. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Aviso Legal</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

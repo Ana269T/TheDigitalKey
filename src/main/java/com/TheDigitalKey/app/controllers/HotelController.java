@@ -52,7 +52,7 @@ public class HotelController {
 		}
 
 		hotelRepository.save(hotel);
-		return "redirect:/hotel/hotels"; // Redirecciona a la página de lista de hoteles
+		return "redirect:/hotel/hotels";
 	}
 
 	// solo ADM
@@ -70,6 +70,14 @@ public class HotelController {
 		model.addAttribute("rooms", habitacionRepository.findByHotelId(hotel.getId()));
 		return "hotel_details";
 	}
+	// solo Usuario
+		@GetMapping("/detail/{id}")
+		public String detallesHotelUsuario(@PathVariable Long id, Model model) {
+			Hotel hotel = hotelRepository.findById(id).orElse(null);
+			model.addAttribute("hotel", hotel);
+			model.addAttribute("rooms", habitacionRepository.findByHotelId(hotel.getId()));
+			return "details_usuario";
+		}
 
 	// solo ADM
 	@GetMapping("/{id}/room")
@@ -120,13 +128,7 @@ public class HotelController {
 		return "pdf";
 	}
 
-	// solo Usuario
-	@GetMapping("/detail/{id}")
-	public String detallesHotelUsuario(@PathVariable Long id, Model model) {
-		Hotel hotel = hotelRepository.findById(id).orElse(null);
-		model.addAttribute("hotel", hotel);
-		return "details_usuario";
-	}
+	
 
 	@GetMapping("/hotels-homepage")
 	public String hotelListHomePage(Model model) {

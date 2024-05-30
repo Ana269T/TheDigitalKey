@@ -47,7 +47,7 @@ public class Hotel {
 	private List<Room> room;
 
 	@OneToMany(mappedBy = "hotel")
-	private List<booking> reservas;
+	private List<Booking> reservas;
 
 	public Hotel() {
 		super();
@@ -55,7 +55,7 @@ public class Hotel {
 
 	public Hotel(Long id, String img, String name, String address, String department, String phone, String classification,
 			String state, String swimming_pool, String wifi, Department department_, List<Room> room,
-			List<booking> reservas) {
+			List<Booking> reservas) {
 		super();
 		this.id = id;
 		this.img = img;
@@ -176,11 +176,11 @@ public class Hotel {
 		this.room = habitaciones;
 	}
 
-	public List<booking> getReservas() {
+	public List<Booking> getReservas() {
 		return reservas;
 	}
 
-	public void setReservas(List<booking> reservas) {
+	public void setReservas(List<Booking> reservas) {
 		this.reservas = reservas;
 	}
 
